@@ -1,0 +1,1510 @@
+// started on 7 Jul 07
+
+[ July 7th ]
+[ 0700 ]
+Decided to throw togehter  a simple R-Type side scroller shooter in preperation for making a full-fledge platformer. The goals of this project are to:
+ * Implement a tile based scrolling engine
+ * Experiment with deterministic AI
+
+[ July 8th ]
+[ 0850 ]
+Scrolling engine up ( sans parallax ). Game running ( and handling user input ) with place holder graphics. Adding shooting functionality, and will get
+basic enemy code running today.
+[ 1902 ]
+Having problem with gun updating routine... In the future, a debug console of some sort is a *MUST* for larger applications.
+
+[ July 09th ]
+[ 1037 ]
+Whew!!! Fixed that problem!!! lol. Added helper routine P_ResortBullets to resort the active bullet array. Back to work today, so progress will slow a bit.
+[ 1200 ]
+'Kamikaze' enemy implemented and working. Will work on adding collison detection tmw.
+
+[ July 10th ]
+Introduced Entity_t type. Added MFC project "RetroEditor" to main project workspace. Will work on fleshing it out during frustating parts of the main game dev.
+
+[ July 11th ]
+[ 1135 ]
+Ent-to-ent collision detection working. Ent-to(Ent)Projectile a little buggy. Will restructure code tommorow to unify all game objects with an Entity_t type.
+
+[ July 12th ]
+Created dialog for the entity editor. Created corresponding class. Will use next day at work to research DIB classes, and decide what to spend the weekend 
+developing. 
+[ 1222 ]
+Reworked the test code to successfully detect collisions between a long string of bullets. 
+
+[ July 14 ]
+[ 0823 ]
+Finished switching everything over to the new 'entity' stuff. Now will do something brainstorming, and decide what to do next. 
+[ 1212 ]
+Decided to add support for the different classes of weapons, and the power-ups that enable them.
+ 
+[ July 15 ]
+[ 1209 ] 
+Didn't get much work done this weekend due to travel. New week will be spent implementing the diffent weapons systems. At this point, the idea for the 
+game is starting to gel in my mind, and the concept is pretty cool...
+
+[ July 16 ] 
+[ 1208 ]
+Starting writing the routines for the different weapons. Added a few members to Player_t struct to support multiple weapons...
+[ 1949 ]
+Now able to switch to the different weapons using the numbers 1-5 ( tentative, will most likely change this for a cyclic based system ).
+[ 2200 ]
+Homing lasers working. Time for work.
+
+[ July 17 ]
+[ 1210 ]
+Added code for plasma beam and droid beam. Will add the shells for the weapons-fire rendering routines tmw. Starting to intergrate piece-wise,
+multi-jointed sprites.
+
+[ July 18 ]
+[ 1051 ]
+Added separate source files for computer controled droid. Added a basic AI routine ( placeholder really ) and rendring routine.
+
+[ July 19 ]
+Not much today. Added a trig table precaling routine. Changed the test scenario to get an idea of what to set sprite limits at... FPS droped to 30 with approx 600 tests
+for collision per frame. Actual game should be quite less. Found an error that keeps the release build from building... Running out of things to do, and must complete
+editor to get a better idea of what comes next.
+
+[ July 20 ] 
+Time for another weekend of coding. Hopefully, I will be able to get 2 full days work in on the editor...
+
+[ July 21 ]
+[ 1254 ]
+Editor up running with 3 different views of map document. Will add support to update status bar with mouse position next. Added prototype support to game to support
+loading of editor rmap files.
+
+[ July 22 ] 
+[ 1209 ] 
+Editor coming along. Just figured out a problem, and now the stauts bar shows the positions of the mouse. Next, will add support to import tile sets. Aiming to get
+the editor working to the point where building a map is possible by the end of the day.
+
+[ July 23 ]
+[ 1124 ]
+Editor running with bitmapped graphics... Will work on adding support for tile parameter editing this week. Am aiming to get to the point where I can start 
+editing and adding entities/events by the end of week.
+
+[ July 24 ]
+[ 1152 ]
+Able to import tilesets as desired ( although there is a problem where partial sets *can* overwrite established ones. Still working on accounting for scrolling...
+
+[ July 25 ]
+[ 1127 ]
+Hmm... The MFC framework is passing me a null pointer... Interesting. Trying to resolve that and design submenus. Wrote a few lines of game code.
+
+[ July 29 ]
+Support added to export map files out and import them back in. Working on fixing some internal things, debugging editor.
+
+[ July 30 ]
+Still reworking/debugging editor. Now able to ( albeit buggy ) load and save to specified files.
+
+[ July 31 ]
+Read more of Code Complete... Very enlightening. Found/fixed a crippling bug. Added/fixed code to display popup menus. Will work on adding support for the following : 
+"Add Spawn Point"      <-Specifies which enemies to spawn ( to include randomization ) at what point
+"Add Event"            <-psuedo-scripted events, basicly going to be used to trigger boss encounters, change music etc.
+"Add Loop Point"       <-specifies the points at which the background will repeat
+"Terminate Loop Point" <-terminates the established loop point
+"Set Scale Factor"     <-used to trigger dynamic scaling
+"Set Speed"            <-used to allow for variable scrolling speeds.
+
+[ August 1 ]
+Able to add both types of link points. Will add support for scrolling tmw, and add scale/speed triggers.
+
+[ August 2 ]
+Added scale points. Am working on consiously changely coding habits to become more productive. Depending on how this project turns out, I plan on porting it to either 
+OpenGL or XNA... 
+
+[ August 3 ]
+[ 2014 ] 
+Scale points working now. Actually tweaked some game code. Can't wait to get done coding the editor, and get back to the real stuff. Started making the Spawn Point dialog.
+
+[ August 4 ] 
+[ 1811 ]
+Working on the hardest part of the editor to date : creating a clear/precise system to create/define enemy spawn points. After this is implemented, only one more major
+part of the editor remains... 
+
+[ August 6 ]
+[ 1832 ]
+Simplified the spawn point code. Will write code to export/import triggers next.
+
+[ August 7 ] ============ [ 1 MONTH MARK ] ==================================================================================================================================
+[ 1138 ]
+Added some code to the Document constructor to allow access from non-MFC classes. Added a few other helper members. Writing the code to export triggers now ( into a bloated
+routine no less... ) 
+
+[ August 8 ]
+Wrote a bunch of access members... Also, car was broken into, and wallet/bookbag was stolen.
+[ 1404 ]
+Cant sleep, finished the editor's import/export code. Could avoid adding code to edit established triggers, but it really should be done now. Really ready to get done 
+w/tool coding... 
+
+[ August 9 ]
+[ 1552 ]
+Despite the turmoil of RL, finished write code to import/export from editor, and import into the game. Now, I have write the corresponding game code to recognize and utilize 
+imported triggers... 
+
+[ August 10 ]
+[ 1837 ]
+Going to start w/the acceleration triggers, then the scaling ones, then the looping ones, and then the spawning.
+
+[ August 11 ]
+[ 1225 ]
+Acceleration/scaling triggers working. Working on looping ones, but decided that it is *essential* to be able to edit established triggers, and am adding support for that... 
+
+[ August 13 ]
+Good weekend of code. Loop triggers working as well. Hit a brick wall in dev. Need to coceptualize a way to structure data in such a way that spawning works it somewhat of a 
+unified, sophisticated, painless manner. Same goes for editing the triggers. Will take a day or so to come up w/a solution...
+
+[ August 14 ]
+So I have decided to implement a virtual heap system. Basicly, it will allow a portion of memory to be allocated specific to each stage, and all entities will be 
+created from that space. Created "vr_heap.h/c"
+[ 1232 ] 
+Removed some bugs from editor. Now able to edit everything as desired.
+
+[ August 15 ]
+[ 0912 ]
+Slowing intergrating the virual heap into game code. Not much written over the past few days, although a big chance may be happening soon.
+[ 1534 ]
+Fixed some bugs w/editor. Still working on getting the heap system working.
+
+[ August 17 ]
+[ 2349 ]
+Very hectic week, and not much work done as a result. The heap system is about complete. Could move forward with game, but will work on adding more functionailty to the editor.
+Things like parallax, single bitmap based bgs need to be imported at some point, so I might as well start on them now. 
+
+[ August 18 ]
+[ 1332 ]
+Fixed the virtual heap system. 
+
+[ August 19 ]
+Working on adding additional data to spawn trigger to allow both x/y values. Been doing a bit of web-dev the last day or so...
+
+[ August 20 ]
+Added support for background rendering in editor. Have decided that in order to push dev forward a bit, I will be adding high-level functionality over the next
+couple of weeks. The goal being to wrap up all the code into a form where the only thing needed is to create content/additional enemy classes.
+
+[ August 21 ]
+Added G_RunLogicCycle to encapsulate frame logic. Keeping logic/input/rendering *completely* seperate as to avoid the problems that 
+plauged PC3D... 
+
+[ August 22 ]
+Added G_TestForCollisions.
+
+[ August 23  ]
+Working on the editor again. Created and added support for dialog to edit tile attributes. Right now, 8(!) layers of parallax are planned. Tiles can also be transparent, as well as animated.
+
+
+[ August 26 ]
+[ 0855 ]
+Work continues on the editor. Been distracted this past week with photoshop and webstuffs. Have a bug pinned down, and am in the ps of eradicating it.
+[ 0941 ]
+NOTE TO SELF: In the future, one should A. Ensure that all data is properly initialized so that one does not have to resort to B. Periodically checking debug output to 
+check for and subsequently remove garbage values ( as I am unfortunately doing now ). Doing so will surely increase the dev process tremendously... 
+[ 1701 ]
+Good day of coding so far, unfortunately, it was not as productive in termes of moving forward. Many bugs were removed, but there are still a bit of "funkiness" going on.
+Will continue to work on smoothing it out, and most importantly, get rid of the practices that create such instibility.
+
+[ August 28 ]
+[ 1716 ]
+Working on debugging... Whoo hoo.
+
+[ August 29 ]
+[ 0910 ]
+Added routines to editor to resort out of place triggers. Now the triggers are exported in sequential order to elimate skipped triggers due to them having been placed 
+into the order out of order.
+[ 0939 ] 
+Weee!!! Just notified that I will offically be a professional web-dev soon!!
+[ 1057 ]
+Game starting to stabilize quickly. Ripped a big block of test-purpose code out of main, and replaced it all with a G_RunLogicCyle call. 
+[ 1740 ]
+Fixed some inconsistencies w/heap system vs game-onscreen-entity-system. Tested out some versiono control stuff ( preprocessor based ). Adding routine
+G_ResetTriggers. 
+
+[ August 30 ]
+Incorporating collision detection into heap/entity system.
+
+[ August 31 ]
+Have decided upon a final dev strat. Realizing that I *am* the project, and taking past projects into consideration, I have decided that *all* code required for the 
+final game will be completed first. This includes all enemy classes,stages,rendering , gui ( and the remnant front-end ) , music/sfx loading/playing , networking etc. Only after this is 
+working ( and solid ) will I start on the content phase ( adjusting the code base as neccessary to support features of the content being integrated ). Not only does this create discrete areas to focus
+on, it also alows me to do any research/dev required for subsequent phase. Hence, I am now developing the art-style for the game. 
+
+[ 1844 ]
+Fixed bug with color depth. Now game runs full-speed at 32bpp. Fixed usage-bug with P_DetectCollision.
+
+[ September 1 ]
+[ 0505 ]
+Editor now shows exact location of spawn points as a little circle.
+[ 1447 ]
+Fixed error in editor ( and did so in spectacular fashion I might add ) when crash when resorting scale triggers. Working on getting the scaling to work as desired ( progressively instead on instaneously ).
+[ 1718 ]
+Car just got towed away... And I fixed the scaling bug. Looks sweet!! Now revamping map drawing code to draw border tiles when extreme scale values are set.
+
+[ September 2 ]
+[ 0353 ] 
+Fixed bug where vertical spawn points where handled as horizontal. ( unrel. Still having problems with PHP and passing forms data from HTML forms and PHP scripts )
+
+[ 1719 ]
+Game is running very solidly at this point. This week will see the beggining on a different work load. I will be making a list of the things to do, and do them. Also, inspired by 
+Jonathan Blows IGF presentation, I will be getting into designing phase. I really hadn't planned on doing anything innovative with this game, but seeing as I've not really hard-wired any
+definite gameplay style, now will be a good time to decide on what to make "special" about this. So I will be drop the coding into a maintenance phase, while going into a design phase... 
+
+[ September 3 ] 
+[ 0942 ]
+Added entity to tile type. To be used for testing for collision of solid tiles. 
+[ 1025 ]
+General Expressions... Not to shabby... 
+[ 1713 ]
+Added seperate file(s) for power-ups <power_ups.h/c>. Will be implementing them next.
+[ 1808 ]
+Finished powerup files. Will add some via the editor, and test them out tmw.
+
+[ September 5 ]
+[ 0923 ] 
+No code yesterday ( not having a car sux immensely... ). Fixed header problem, and began adding power-ups to heap system.
+Added VH_Malloc to allow the allocation of generic-type pointers ( abstraction is always good ).
+
+[ September 7 ] ============ [ 2 MONTH MARK ] ==================================================================================================================================
+[ 1532 ]
+Plan on doing some hardcore dev this weekend. Both on this project, and well as the web-stuffs . To think, at this point PrimaryCubes was already complete... I am aiming at getting this 
+project finished by the end of the year, so I can start porting it and then start on my BlockParty entry ( the joys of 3D!!! ).
+
+[ September 8 ]
+[ 0057 ]
+Power-up now working, but have revealed a glaring flaw in the way the editor exports spawn points....
+[ 0227 ] 
+Turns out that was no big deal. However, it's strange that I've never wrote fall through cases before ie : 
+	case ENTITY_TYPE_RED_POWERUP:
+	case ENTITY_TYPE_GREEN_POWERUP:
+	case ENTITY_TYPE_BLUE_POWERUP:
+	case ENTITY_TYPE_YELLOW_POWERUP:
+		{
+			// alloc powerup
+			Vect2_t defaultVect = {0,0};
+			pPowerUp_t pPowerUp = (pPowerUp_t)VH_Malloc( &pGame->gameHeap , VH_ENTITY_POWER_UP );
+			PU_Spawn( pPowerUp , pSpawnPoint , defaultVect );
+			G_AddEntity( pGame , &pPowerUp->ent );
+			break;
+		}
+[ 1806 ]
+I read somewhere "I always check my pointers!"... Unfortunately, I didn't write it. Well, chock that up to another programming practice to be learned, as I go back to 
+hunting down bugs.
+[ September 9 ]
+Not much code the past 24 hours. I need to sit down and re-think how to integrate the v-heap / global entity system, then come back and fix it.
+[ September 11 ]
+Still have been having an uneventful couple of days. This problem really has me stumped. Really need to redesign this or somethig...
+
+[ September 12 ]
+Ripped out the offending code, started anew, and have boxed the bug into a corner.. 
+
+[ September 14 ] 
+STILL not working correctly. I will be moving on so as not to impede progress further... 
+[ 2239 ]
+Switching gears, starting to write a demo-input logging system.
+
+[ September 15 ] 
+[ 0753 ] 
+Demo/input logger working.
+
+[ September 16 ]
+[ 2013 ] 
+Added a new workspace 'testbed' in which to test out troublesome bits on a smaller scale... I *need* to get past the vheap atrosity and move forward.
+
+[ September 17 ]
+One last hurray for the virtual heap system. I will rewrite it, and it I can't get it to work, screw it ( BTW the other bit works now, so I am sure 
+that I will be able to get this one working as well....ill-concived or not! ).
+[ 1338 ] 
+So far so good with the re-write... But alas, it is time for sleep and return to work :(
+
+[ September 18 ]
+[1230]
+No time for much code today. Just got in from work, and .... I started playing Cave Story ( uh ohh... this game is amazing... )
+[1952]
+Eureka!!! I've found out how to fix the problem that has been troubling be for the past 2 weeks... In a word : FRAGMENTATION!!!!
+[2010]
+Prototyped VH_CalculateFragmentation and VH_Defragment... 
+
+[ September 21 ]
+[ 1057 ]
+Almost 2 weeks and it's still not working... This really sux. No more Mr. Nice Guy... 
+
+[ September 22 ]
+[ 1404 ]
+Wow... Finally got it working... Note to self, in the future, when actually wanting to complete the game at a decent rate... ALWAYS OPT FOR THE 
+SIMPLIST MEANS POSSIBLE!!!! I have a rather nice ( read : sophisticated ) system running for entity/enemy-type management, but it took 2 WEEKS to get 
+running... And it still needs to cleaning up... Oh well, I guess I will go on to some designing next.... 
+
+[ September 23 ] 
+[ 1105 ]
+Alright!!! Back in business. The design of the game is starting to gel ( :) ), so I have a gradually solidifying image of what I am building. Great! This 
+upcoming week I will begin the structs and logic for the 'Coccus' class of enemies. Finally, on with the good stuff.
+[ 2015 ]
+Took a break from dev the past 48 hours in preperation for a good dev-cycle this upcoming week. Did  some (mental) design, as well as some concept art and research. The
+art-style will be something in the vein of Behemoth games ala Castle Crashers and Alien Homimoid... The real work is soon at hand. :)
+
+[ September 24 ]
+[ 0941 ]
+Hehehehehhh... Wrote the routine shells for Cocci. Their behavior is being designed with a 'organic' level of complexity in mind. Basicly, 
+they 
+* search around for other cocci to pair up with
+* combine with friends to form new morphographies ( each with different attacks/qualities )
+* reproduces ( via fission ) after it reaches maturity.
+
+The result I am aiming for, it an evolving mass that lives,thinks, and repoduces ( exponentially if not destroyed by the player )
+
+So, now I have to think about the data-structs need to support reproduction ( a tree comes to mind, but I may be able to get away with just
+a linked list ). The trouble, however, will certainly prove to be integrating the divisions into the exsisting memory system.... 
+[ 1012 ]
+Researching Quake 2 ai routines... Very nice. It is divided into generic AI routines shared by all entities, and then routines specific to 
+each unique type. It also using a state flag variable to keep track of entity state... Hmm... I started using enums, but will switch that approach 
+to flags...
+
+[ September 25 ]
+[ 1415 ]
+Added the code to load cocci from editor/trigger into game world. Now, I have to implement it's AI :).
+
+[ September 26 ]
+[ 1125 ]
+A base model AI is up and running. Right now, if left solitary they just creep across the screen. If other's are in the area, they converge together and adjust
+thier speed ( emergent-behavior ). Tmw, I will make it so they multiply at the correct time. AI code really is the best ( even if this is only rudimentary ), I can
+hardly wait for writing boss code.
+[ 1543 ]
+Change some code in the editor, so that now, each spawn point orb is rendered using a color specific to each entity type (nifty). That reminds me, I haven't done any 
+coding on the editor lately... 
+
+[ September 28 ]
+[ 1744 ]
+Got a new car today!! :) Deleted the code from Coccus_Run, and will be rewriting it this weekend. Hopefully I will get the cocci running, and then I will aim at a goal 
+or researching/conceptualizing/implementing an enemy/boss class each week. 
+
+[ September 30 ]
+[ 1959 ]
+A very unsuccessfuly weekend of coding... I did, very much consequently, see "The Kingdom" and "Across the Universe". Now that I've have mobility again, everything will 
+be back on schedule. I am still determing exactly how the cocci will behave... 
+
+[ October 2 ]
+[ 1027 ]
+Working code so that the cocci are remove properly from world/heap when destroyed ( I hope I won't have this problem with each new enemy class.. )
+
+[ October 3 ]
+[ 1058 ]
+Still working on yesterdays problem. Although I've added a block to detect which sort of entity has collided with the players bullets and then act accordingly.
+[ 1806 ]
+There is some "ghosting" going on where destroyed entites still exsist... Will have to work on that this weekend. Also, the cocus logic is nearly complete, only, the 
+most difficult part remains. Depending on how many cocci exsists, they will attempt to merge and pair together into predefined shapes ( each with different attacks/strenghts ).
+How to implement this is a mystery to me right now, but that's where I'm going. Looking at the project ( even at this point ) this is definitely the most complex , single ,
+project I've ever worked on :).
+
+[ October 4 ]
+[ 1019 ]
+Read a very inspiring article by Derek Yu today ( big ups to Derek! )... It's good to know there are like minded ppl in this world. It's all about the love!!! *ahem* Found
+the source of the "ghosting", and have all but eliminated it.... 
+
+[ October 5 ] 
+[ 1848 ] 
+Three day weekend coming up...
+
+// [ THREE MONTH MARK ] ===============================================================================================================================================
+
+[ October 7 ]
+[ 0748 ]
+Fixed the problem with ghosting. Good. Not a lot of dev done the last couple of day ( other than real world ). So I look forward to having a solid day today. 
+[ 1648 ]
+Working on another part of the emergent routines that checks to see if the coccus is to close to it's neighboors.... Saw Resident Evil 3 today ( interesting... ). It seems that 
+having a life is most determential to coding... 
+[ 1900 ]
+Coccus class working well enough for right now. The emergent behavoir of it, work decently, and there is still a lot of room left to create some truely organic enemies... Moving on 
+with the aim of making progress.
+[ 1925 ]
+Working on the concept for the next class : Bacilli ( rod shapped microorganism ). The name "Timmy-tubercolosis" sounds cool, so I will certainly be using that. I've deciced to write
+*purely* determistic ( read : stupid ) AI for this class so it should be able to knock this out pretty quick.
+
+[ October 8 ]
+[ 1029 ]
+Posted the concept/mockup art for the bacilli class online. Will decide on how the differnt permutations will work on the next couple of days, while working out a few new bugs.
+
+[ October 9 ] 
+[ 0938 ]
+Yeah, so the Bacilli class will be the first class to be developed *knowing* it's going to be segmented ( multi-jointed ) sprites. This should be a good lesson 
+in designing/transforming complex sprites.
+
+Made bacilli.h/c
+[ 1333 ]
+Place holders and prototypes in places for 3 different permutations of the bacilli class. Will work on adding them to the game world tommorow ( and add editor support )
+
+[ October 10 ]
+[ 0920 ]
+Added support to editor to render bacilli spawn points ( variations of pink for each subclass ). Added entity type macros. 
+[ 1442 ]
+Ran across a weird header conflict problem ( doh!). It has held together by a hack, that I am doing away with.
+
+[ October 11 ]
+[ 1654 ] 
+Working on fixing the header problem w/vr_heap.h
+
+[ October 12 ]
+[ 2302 ]
+Did some code house-cleaning, and the problem's fixed ( for now ). Aiming at getting the bacilli classes working this weekend. 
+
+[ October 13 ]
+[ 1605 ]
+Bacilli working and in game now. Pretty cool, although simple. Will be doing moving onto the first multi-jointed entity next.
+
+[ October 14 ]
+[ 1211 ]
+Turned 26 today... Yep. Working on the diplo-class.
+[ 1231 ]
+Awesome. Fixed a nagging bug that was causing ugly drop outs... Will do the strpto-bacilli class tmw.
+
+[ Octover 16 ]
+[ 1344 ]
+Strepto class nearly integrated... 
+[ 2017 ]
+Strepto class working now. Time to research the next class :).
+
+[ October 17 ]
+[ 0833 ]
+Researching the next class. Also, have decided to do a quick side project w/particles.
+[ 1121 ] 
+That was simple enough. Now to fiddle around with it further... 
+
+[ October 18 ]
+Still working on particle stuff. Will resume work on project this weekend.
+
+[ October 20 ]
+[ 2106 ]
+That was a nice break. Back to it w/Bdellovibrio!
+
+[ October 22 ]
+Decided to put of bdellovibrio till later. Will work on the aptly named "Blastobacter" class now.
+
+[ October 23 ]
+[ 1004 ]
+Did the framework for the blasto class. Added support for virtual heap stuff as well. 
+[ 1253 ]
+Blastos in the game now ( placeholder ai ). Will work on adding the first pattern'ed based AI tmw. Patterns,finite state machine, scripting oh my!!!
+
+[ October 24 ]
+[ 1306 ]
+Blasto now shoots. After seeing this in action, I need to add a class that shoots stupidly ( as blasto does now ). Will add intelligence to his 
+targeting next... 
+[ 1423 ]
+Blasto does it's own collision decteciton for its projectile(s).
+
+[ Octover 25 ]
+worked on patterns.
+
+[ October 26 ]
+[ 0935 ]
+Working on some md array stuff. Working it out in the test-bed project. 
+
+[ October 28 ]
+Not much work done this weekend... Need to do some more research and think about just how I am going to do theses patterns.
+
+[ October 30 ]
+Making some good progress with the pattersns.
+
+
+[ November 4 ]
+Parents were by this weekendn :). Subsequently, I've not done much code the past few days. I will be starting on the first boss next...
+
+Bad news : 
+
+Josiah,
+ 
+Continued delays in Congress passing the budget have prolonged our hiring freeze.  Management on this contract is very protective of people and is thus unwilling to staff positions until the budget numbers are known.  While this makes it difficult for me in the short run I admire management's attitude and saw it pay off when a similar budget delay occurred 2 years ago--we didn't have to lose good people.
+ 
+Due to your skills and attitude I view it as quite likely you will have found a position but my intention is to contact you when the freeze is lifted to see if you are still available.  
+ 
+Sincerely,
+ 
+Jim Simons
+
+[ November 6 ]
+[ 0722 ]
+Have decided to start on the first boss today. 
+[ 1305 ]
+DoH!!! System is overheating!!! It looks like I need a new power-supply ( a whole new system really ) , but not have the cash for one.
+
+// [ SYSTEM NO-OP for the FOUR MONTH MARK ] ===============================================================================================================================================
+
+[ November 10 ]
+[ 2310 ]
+System up and running. Turns out, that I had a backup power supply sitting not 5 feet from me... 
+
+[ November 11 ]
+[ 0924 ]
+Working on the first boss.
+[ 1732 ]
+Actually did some work on the editor today ( debugging )
+
+[ November 12 ]
+[ 1454 ]
+Did some tweaking with the boss stuff. Started adding support for the FSM ( will sit down and think about how the boss will work tonight ).
+
+* NOTE *  The next project will be heavily scripted, as I waste to much time tweaking/messing around with little things. 
+
+[ November 13 ]
+[ 1139 ]
+Working on the FSM code for the boss's orb(s). I am definitely feeling this approach to AI. So far I have defined the first state, and have it operating 
+properly within the machine.
+[ 1210 ]
+Defined and tested another ( 'lonely' ) state. This is awesome :)
+
+[ November 14 ]
+[ 1120 ]
+The shooting state is working now. Will work a bit on the next one...
+[ 1520 ]
+Finished the last state for the orbs. Will work on the higher level routines to drive the orbs states, as well as the boss's;
+[ 1620 ]
+Decided to start recording some demos to track the progress of the games.
+
+[ November 15 ]
+Added a few more states. Tried getting GLFW up and running, and have come to the conclusion that this is the last project I will be using this 
+IDE for ( to think, its nearly 11 years old!!!, and I've been using it for nearly as long! )
+
+[ November 16 ]
+[ 1710 ]
+Working on the boss' states now. I think I have finalized the number of states he will have , now I am just defining them. After that, and I will 
+determine how/when he switches states, and that will be it.
+
+[ November 17 ]
+[ 0621 ]
+Working on another state I decided to add to the boss. He now can shoot a massive desperation particle beam, and I am working on the logic that shoots 
+out smaller bursts of that radiates outs from him ( having a time getting the slopes to work correctly , thus , will be researching Besheeham )
+
+[ November 18 ]
+I have all the states working ( at least sufficently for now ), so now I will start on driving into and out of the different states.
+
+[ November 19 ]
+Working on the routine that determines when to set the boss' states.
+[2151]
+FSM is working now. I have to add code to allow the player/enemies to be damaged. After that , I can test the boss to make sure it's working properly.
+
+[ November 20 ]
+[ 0758 ]
+Adding support for entity/player damaging/health.
+[ 0843 ]
+Player able to be damaged/inflict damage. Now I have to go through all the clases, and add thier damage values.
+
+[ November 21 ]
+[ 1513 ]
+The orbs now change states after being destroyed intially. A couple more things to work out, and then the next boss. ( I must say , boss coding
+is ... well , boss :) )
+
+[ November 24 ]
+[ 1326 ]
+Still grinding out the final details of the first boss. Noteworthy , I've discovered  a useful use for pointers that reducing redundant code. This method
+is perhaps common knowledge to many, but only recently utilzed by myself...  Ala : 
+
+	Vect2_t leftTarget =  { pB1->ent.position.x, pB1->ent.position.y };
+	Vect2_t rightTarget = { pB1->ent.position.x ,pB1->ent.position.y };
+	pVect2_t pTarget = NULL;
+
+	if( pO == &pB1->orbs[ pB1->eyeballs[ BOSS_ONE_LEFT_EYEBALL ] ] )
+	// left eye ( R.I.P )
+	{
+		pTarget = &leftTarget;
+	}
+
+	else
+	{
+		pTarget = &rightTarget;
+	}
+
+Then use pTarget to reference the desired target.
+
+[ 1601 ]
+Boss finished besides one firing routine that requires I do some more research on BLines. So, next ( after cleaning and cooking ) I will start on the concepts 
+for the next boss. I have decided that I am going to do 3 stages/3 bosses and work to finish a version with those intact.
+
+[ November 27 ]
+[ 1422 ]
+Started to add the backbone support for boss#2. Still haven't decided how he will work, but will be working on that at work tonight.
+
+[ November 28 ]
+[ 1522 ]
+DId a little work on the boss. Realized a *major* design flaw that I put into the early game code ( dealing with the virtual heap , and global entity handling -- in fact , 
+if I would have developed it differently , there would have been no need for the virtual heap system... Oh well, it is still possible to use the more logical approach without
+destroying any dependencies. Also, will be adding support for larger than a fixed size map soon.
+
+[ November 30 ]
+[ 1008 ]
+Finished the concept for the boss. Next, implementation. This should prove to be a  pretty cool, if not somewhat traditional, creation.
+
+[ December 1 ]
+[ 1831 ]
+Ok, so the second boss is now added to the ( quite horrible ) entity management system. So now I can work on the fun stuff. In related news, 
+Aquaria is going to be released on the 7th.... Hopefully I will be able to achieve success on the level that those two guys are ( not with this 
+project , but the coming ones... )
+[ 1908 ]
+Again , code like this is a good thing... 
+
+r_boolean B2_Run( pBoss_2t pB2 , pPlayer_t pP )
+{
+	// what haven't I been doing this all along... 
+	r_boolean (*ai_callback)( pBoss_2t , pPlayer_t);
+
+	switch( pB2->phase )
+	{
+	case BOSS_TWO_PHASE_ONE:
+		{
+			ai_callback = B2_RunPhaseOne;
+			break;
+		}
+
+	case BOSS_TWO_PHASE_TWO:
+		{
+			break;
+		}
+
+	case BOSS_TWO_PHASE_THREE:
+		{
+			break;
+		}
+
+	case BOSS_TWO_PHASE_FOUR:
+		{
+			break;
+		}
+	}
+
+	return ai_callback( pB2 , pP );
+}
+
+[ December 2 ]
+[ 1336 ]
+Make routine for generic tracking. Will replace exsisting tracking code with it ( also it fixes the 'jittery-bug' that occurs when an entity's speed is greater than
+the distance to the evading entity... )
+
+[ December 3 ]
+[ 0842 ]
+Working on phase one. Using 3D to 2D projections ( well, trying to ) to have the boss be able to shoot projectiles at the screen. 
+[ 2102 ]
+The shooting state changes are working, I just have to figure out how I am going to do the pseudo-3d stuphs.
+
+[ December 4 ]
+[ 0905 ]
+Abandoned the 3d projections and instead have implemented a decent hack. Will figure out how to move the  boss now , which is linked to the particle system.
+
+[ December 5 
+[ 1106 ]
+Wrote B2_MoveToBackground added to FSM.
+
+[ December 7 ]
+[ 1736 ]
+Finished with transition routines. Will start on the boomerage attack method next.
+
+oh yeah today is the :
+// [ FIVE MONTH MARK ] =====================[ ALSO IS THE RELEASE DATE OF AQUARIA :) which , as of 1746 isn't available yet ] ==========================================================
+
+[ December 8 ]
+[ 1246 ]
+Working on boomering... Aquaria is quite good. 
+
+[ December 9 ]
+[ 1037 ]
+Working on the final phase now. Still need to implement the particle fx... 
+
+[ December 10 ]
+[ 1549 ]
+Implementing particle routines. A bug has surfaced where the reticule speed is being reset and is able to track down player with 100% accuracy... Will 
+work on  fixing that at some point.
+
+[ December 11 ]
+[ 1445 ]
+This marks the first time I've ever used an array of function pointers : 
+...
+
+r_boolean (*currentCallback[ BOSS_TWO_CYCLES ])( Boss_2t* , pPlayer_t );
+
+...
+
+	// setup the order the phrases take place int
+	pB2->currentCallback[ 0 ] = B2_RunPhaseOne;
+	pB2->currentCallback[ 1 ] = B2_MoveToForeground;
+	pB2->currentCallback[ 2 ] = B2_RunPhaseTwo;
+	pB2->currentCallback[ 3 ] = B2_MoveToBackground;
+	pB2->currentCallback[ 4 ] = B2_RunPhaseOne;
+	pB2->currentCallback[ 5 ] = B2_MoveToForeground;
+	pB2->currentCallback[ 6 ] = B2_RunPhaseTwo;
+	pB2->currentCallback[ 7 ] = B2_MoveToBackground;
+	pB2->currentCallback[ 8 ] = B2_RunPhaseOne;
+	pB2->currentCallback[ 9 ] = B2_MoveToForeground;
+	pB2->currentCallback[ 10] = B2_RunPhaseThree;
+
+...
+
+[ 1549 ]
+Almost done with second boss. Need to rework some of the state routines , and then on to the next boss.
+
+[ December 12 ]
+[ 0838 ]
+Added tweak to particle rendering code so that the mass more closely resembles a flame.
+
+[ 1817 ]
+Debugged phase one. After I fix one nagging bug on phase 2, onto thinking about the next ( and final ) boss.
+
+[ December 13 ]
+[ 1407 ] 
+Still working on fixing phase 2.
+
+[ 1545 ] 
+Fixed phase 2 bug. Could move on, but have decided to do some tweaking to the intervals and fix another bug with the transition to foreground routine.
+Also need to tweak the particle interaction system. Added code to P_MovePlayer to restrict movement to visible area.
+
+[ December 14 ]
+[ 1411 ]
+Boss 2 is running to my satisfaction now. I could ( and proabably will ) mess around with getting the particles to work a little differently, but will start 
+working on the on the last boss soon. It looks like it is taking about 2 weeks for each boss, so by january, I should be working on an entirely differnt group of
+stuff.
+
+[ December 15 ]
+[ 0950 ]
+Boss 2 completely working now. Will take a short dev break to do a design phase on the next boss. 
+
+[ December 16 ]
+[ 2121 ]
+Nothing else new. Saw "I am Legend" and "Perfect Holiday"
+
+[ December 17 ]
+Still don't know what the next boss is going to be like yet, but I have started adding the generic code for it anyway.
+
+[ December 18 ]
+[ 1327 ]
+Idea for the final boss is starting to congeal, and I must say, it seems very awesome... If not , overly computationally expensive...
+
+[ December 20 ]
+[ 1254 ]
+Added some code to the editor to support the next boss. Will flesh out the generic routines, and get the boss imported into the game next. 
+I still don't have a solid idea of what he will be like, but should have a better one soon.
+
+[ 1837 ]
+Ut oh... A bug in the editor is stalling all progress. I haven't worked on any intergral MFC code in a while ( not to mention that someone stole my MFC book ), 
+so this will be a nagger... 
+[ 1901 ]
+Hmmm... I fixed it, but it really doesn't make any sense... After this next boss, I will return to the editor. On with the final boss
+
+[ December 22 ]
+[ 0959 ]
+Haven't done much code because I don't know how the boss will work yet. So today, I will be sitting down with the pencil and paper and taking care of that ( funny
+the face of this game has almost completedly changed since it's conception ).
+
+[ December 23 ]
+[ 0026 ]
+Did a little bit of brainstorming and not much code. Decided that the final battle will be facing off with Goliath and the Sparkys... Having a problem deciding on 
+all the differnet attack modes... 
+
+[ December 24 ]
+[ 1323 ]
+So I finally decided how the boss is going to work ( well, at least I have an idea for 4 out of the 5 differnt phases ). The concept is pretty wacky, but pretty original. This 
+will likely be a 2K LOC file... 
+
+[ December 25 ]
+Can't seem to get a solid grasp on what I can going to do next. Everything I am considering is going to required a fairly involved physics system, which I really don't
+feel like doing right now ( although I will most likely decided on a hack of some sort ).
+
+[ January 2 ]
+[ 1816 ]
+Back from Detroit :(. Coding will commense soon.
+
+[ January 3 ]
+[ 1535 ]
+Writing the physics code for the spary-propulsion system. Will write the test base next.
+
+[ January 5 ]
+[ 1847 ]
+Wrote a few lines of code today. The past weeks has been somewhat unproductive. Have to research the union construct as a means of eloquently dealing with the polymorphic 
+nature of the 'sparky' dude. Also, doing some research on basic physics.
+
+// [ SIX MONTH MARK ] ===============================================================================================================================================
+
+[ January 7 ]
+[ 0939 ]
+Will be putting the final boss on hold for a while with the aim of pushing onward. Will be adding frontend support next.
+[ 1136 ]
+Added main_menu.h/c files.
+
+[ Jaunuary 8 ]
+[ 1408 ]
+Fleshing out the main menu routines. 
+
+[ January 9 ]
+[ 1131 ]
+Added basic menu renderer.
+[ 2006 ]
+Added support for keyboard handling for the menu. This has reintroduced the problem I had with Primary Cubes ( trouble with buffered input ), so I will have to 
+re-research the keyboard routines as to resolve them this time through.
+
+[ January 11 ]
+[ 1147 ]
+Added options_menu.c/h This is to be the final menu. After that I will write the backbone stuff for the credits.
+
+[ January 12 ]
+[ 0000 ]
+Deciding what things to add to the options menu
+[ 1247 ]
+Still working on the options menu.
+
+[ January 13 ]
+[ 1311 ]
+Fleshing out the code to support options menu.
+
+[ Jaunuary 15 ]
+Hmmm... It seems that my blossoming personal life is back to nils-ville, so dev should be able to continue at a brisker clip... *sigh*
+Still hacking through the options menu.
+
+[ January 16 ]
+[ 2111 ]
+Finished renderer for opt menu. Will finish this this weekend.
+
+[ January 17 ]
+[ 1716 ]
+Added some more stuff to the options menu. Still, much functionallity needs to be added before it is complete... 
+
+[ January 20 ]
+[ 0101 ]
+Finally got around to hacking through some more menu code. Only one more routine to make it fully functional.
+[ 1408 ]
+Menu ( shell ) works now. I just need to figure out how to work around allegros input routines to make everything more stable... So now I have 
+to decided what to do next. 
+[ 2110 ]
+Decided that I will be adding audio support next... So it's time to break out the fmod chm.
+
+[ January 21 ]
+[ 1317 ]
+Working on implementing fmod sound support... Just came back from watching Cloverfield... 
+
+[ January 22 ]
+[ 1055 ]
+Made another seperate project ( FMOD_Test ) to fiddle around with. Got the sound ( mp3 ) working, will mess around with this a little while longer
+to gain a better understanding of it... 
+
+[ January 23 ]
+[ 1039 ]
+So I have the framework setup for how the sound management will work. For this project, I will have a more  involved sfx system allowing for 
+crossfades and seperate channels for each class of sound source. Right now there are 7 seperate channels in use, but this will easily go into the 
+double didgets... 
+
+[ January 24 ]
+[ 0919 ]
+It seems that I have everything necessary to support the in game sounds now... This is starting to get very close to where I will be focusing only on content. 
+I will hold off on doing the intro/loading screens, cause they seem incidental at this point... So I have to figure out what needs to be implemented next... 
+Although it may be complicated, I may begin working on the cutscene system next... 
+[ 2040 ]
+Made slight adjustment to AUD_SetVolume
+
+[ January 25 ]
+[ 2228 ]
+So, it seems , with most of the game stuff finished , I need to work on adding features to the editor ( doh!!! )... Which will no doubt prove to be most harrowing... 
+Code rot has surely set in deep, but I will work on refamilirizing myself with  MFC and the established code.. 
+
+[ January 26 ]
+[ 1247 ]
+So here is where I will put the list of things to incorporate into the editor : 
+* Define and export parallax layers. 
+* Fix bug where too many filenames crashes upon import.
+
+[ January 27 ]
+[ 1334 ]
+Bah. No code this weekend. Did see National Treasure though. It would seem that progress in the real world, and progress in the worlds created through binary , are quite 
+inversely proportional.
+
+[ January 28 ]
+[ 1126 ]
+Started working with the editor again. Not to bad so far. Although, unfortunately, I had to close out the IDE ( for the first time in weeks ), and the project workspace 
+got a bit corrupted... Oh well.
+
+[ January 30 ]
+Added a few lines to CTile's constructor.
+
+[ January 31 ]
+Not much done today... I am seriously considering building the content for the first level... 
+
+[ February 1 ]
+Yep. I will start on the concept art for the first stage this weekend, and start researching tileset tuts online as well. 
+
+[ February 3 ]
+Started with the concept art for level one. Will add the source files as well.
+
+[ February 4 ]
+Working on concept art. Have determined how the first section will go. Each stage will have it's own assortment of "NPC" entities that 
+are alive and flourish in the gameworld. Right now , stage one will have 3 seperate ones ( that may even reappear at later leveles... )
+
+[ February 5 ]
+Working on the tileset. Right now, I am dissatisfied with the quality of the tiles. So, I will have to re-evaluate my approach to get them looking a bit 
+better.
+
+[ February 6 ]
+Finalized the sections of the stage , and am now deciding all the neccesary tiles. Should be cranking out the tileset this upcoming weekend.
+
+
+// [ SEVEN MONTH MARK ] ===============================================================================================================================================
+
+[ February 7 ]
+[ 0941 ]
+Added "stage_one.cpp/h". I have decided, that in lieu of a complete scripting system, I will have an event-based system ( hard code ).
+Added types for blood constituents.
+
+[ 1357 ]
+Wrote some macros to structure movement of blood-stuphs.
+
+[ February 8 ]
+[ 1504 ]
+Wrote some generic routines to handle the blood fragments. Have been working on the pixeling skills, and they should be good enough to 
+start producing some decent looking tiles... 
+
+[ February 9 ]
+[ 0157 ]
+7/20 tiles done. To early to tell how well they will look in the game, but they seem to be meshing pretty well ( considering ).
+[ 0255 ]
+10/20 done.
+[ 1221 ]
+16/20 done. Unfortunately, some bug with the CFileDialog class has resurfaced where to many filenames causes the import to fail... That's alright,
+I can just hardcode the filenames in the meantime.
+[ 2009 ]
+22/26 done... More like 22/30-something... It seems that I've underestermated the true number of tiles to get this done properly..
+
+[ February 10 ]
+[ 0252 ]
+30 done. It seems that I have neglected the need for a series of tiles ( which bridge the gaps on diagonal sections ). Therefore I am going to need at least
+4X some number of tiles. I decided to pixel the tiles at 64x64x24 instead of 32x32. This way, the detail remains during scaling, and when viewed at a reduced
+scale, the tiles are pretty much seamless ( although far from perfect ).
+
+[ February 16 ]
+[ 0339 ]
+Time for another weekend.
+[ 0453 ]
+Finally got those 2 weird , piecewise sections completed. Now , to make the permutations thereof... 
+[ 0503 ]
+Right now , there are 33 tiles completed. I am going to start making a mockup ( GraphicsGale ) to see if there are any other ones that I need to do.
+
+[ 0541 ]
+40 tiles done.
+
+[ 0758 ]
+Watched Truman Show. Now there are 46 tiles. This seems to be it for now. Now I have to decided the dimensions of the level , and how to get the required
+tileset to import properly into the editor.
+
+[ February 17 ]
+[ 0025 ]
+Searching for the code that handles the tileset importing stuff.
+
+[ 0711 ] 
+ref . http://support.microsoft.com/?id=179372
+
+Well that makes me feel a little better. The hack is justified now. MS dropped the ball , and rectified it with SP2. But unfortunately, I don't have enough
+free space on the HDD to install it. So I will continue with the hack now that I understand why it is required. 
+
+[ 0756 ]
+Weee!!! Fixed another big bug that was making it so the scroll bar position of the TileSetView was being disregarded... Now , I can build the entire level!!! 
+I really can't wait until I can completely forget about MFC and move onto the C# and WinForms.
+
+[ 0839 ]
+Building demo lvl and , yep, we are going to need some more tiles. It looking like somewhere in the neighboorhood of 10 more or so. But the ones I have for 
+now will suffice. Feel like writing some game routines, so I will add the ai for the blood fragments.
+
+[ February 18 ]
+[ 1123 ]
+Having a great time laying out the first level.
+
+[ February 19 ]
+[ 2149 ]
+Still working on laying out the stage.
+
+[ February 20 ]
+[ 1225 ]
+Still working on it. It definitely starting to take shape though. It is becoming obvious that the player movement code is going to have to be expanded upon
+inorder to take features of the level into consideration ( ie restrict movement so that solid tiles are handled properly ).
+
+[ February 21 ]
+[ 0949 ]
+Working on the boss area.
+[ 1043 ]
+Yeeaaaaaaah. Stage complete , save for the border tiles , which I may never get around to putting in. There are still some more tiles to do , but thats
+not really that pressing. Now it's time to get the map in-game and start playing around with the code.
+[ 1241 ]
+Going back to the map.c/h files and am trying to get the map struct to allocated arbritaryly sized maps ( multidimensional dynmamic allocation issues )
+
+[ February 22 ]
+Still having problems w/pointers... Mom -n- co will be coming soon, so this won't be a very productive weekend... Oh well.
+
+[ February 24 ]
+Hacking around... 
+
+[ 1557 ]
+Mom/Bro/Nep on thier way back home. Very eventful weekend ( in RL ). No so much in VL.
+
+[ February 25 ]
+[ 1158 ]
+So fixed a bug where the map files where being written in binary format ( fopen with the *w flag ) , but read in the standard,non-binary form. So I now 
+have the problem isolated to the M_Draw routine... 
+[ 1213 ]
+Doh. Had the wrong tileset loaded ( was attempting to draw unallocated tiles ). Fixed, so now I have to figure out a way ( besides resampling the tiles ) to get allegro
+to resample the images.
+[ 1234 ]
+Ok, fixed that. Now I can start on some new stuff! yeah!!! tmw!!!
+
+[ February 27 ]
+[ 1027 ]
+Time to work on the editor again so that it properly exports tile attribs.
+[ 1036 ]
+... hmmm... it seems that I already had started code to do this... Just need to complete it and do the import side of it.
+[ 1053 ]
+That was easy , just one thing needs to get converted from a string literal to a index.
+[ 1138 ]
+Alright , cool. Everything is being exported properly. Next will work on getting the stuff imported back into the game.
+[ 1430 ]
+Encountered a design flaw with the way the map is prep prior to import... Need to write some more wrapper routines to get main re-simplified.
+[ 1447 ]
+Alright fixed that. And now it's time for sleep. Everything being imported correctly now.
+
+[ 2030 ]
+Trying to figure out how to add parallax fx. Using newly inported data.
+
+[ February 29 ]
+[ 1136 ]
+After seeing the parallax will take some major effort , I've decided to work on the solid tile interaction for now... 
+Working on M_P_CheckForCollision
+
+[ March 1 ]
+[ 1430 ]
+Working on M_P_CheckForCollison.
+[ 1543 ]
+*VERY* proud of how fast I was able to get a working version of that up and running. :) It still needs some work to get it 
+"perfect" , but it is working. I will have to post this on gamedev I am so proud.
+[ 1731 ]
+All that I need now , is to have the map tile entity data be regurally updated , and implement restrictions to 8-dof instead of 4-dof... 
+Both of those are trivial , so I will sit down and think about how to do the parallax stuff next.
+[ 2122 ]
+Still haven't figured it out , but it has struck me that the next thing after that is to start on the sprites... Which means, a demo is 
+possible within the next couple of months... Maybe.
+
+[ March 2 ]
+[ 0643 ]
+Decided that I am going to continue to think about the parallax stuff while implementing the animation system ( yeaaa :) ) , which means I will 
+be starting on the sprites soon. Also , I will write a sprite extraction system as well..
+
+[ March 3 ]
+[ 1131 ]
+Did one frame for the kamikaze , writing code to handle frame loading.
+[ 1230 ]
+Changed Ent_Draw to : 
+
+masked_stretch_blit( pE->frames[ pE->currentFrame ] , doubleBuffer , 0 , 0 , pE->frames[0]->w , pE->frames[0]->h , pE->position.x , pE->position.y , pE->w , pE->h );
+
+Now it scales down the original image to the one defined by the entity. 
+
+[ March 4 ]
+[ 0837 ]
+Kamikaze animation working now ( albeit brute-forced and as fast a systematically possible ). So , next I have to figure out how to throttle the animate rates.
+[ 2149 ]
+Taking sketch pad to work , to work on some sprite lineart.. 
+
+[ March 5 ]
+[ 1059 ]
+Reworked those first 3 sprites a bit. Nothing fabulous... Although I think I have finally gotten the hang of the pen in PShop , so I may consider doing a
+more polisehed,vector look for the graphics... 
+
+[ March 6 ]
+[ 1100 ]
+Working on adding the flame frames to the kamikaze.
+[ 1200 ]
+Ok, that works. Need to rework the sprites though , and more importantly , fix the rate problems ( somehow ).
+
+// [ EIGHT MONTH MARK ] ===============================================================================================================================================
+// After 8 months. Everything is actually starting to take shape. Definitely wasted a couple of months along the way , but onward... 
+
+[ March 8 ]
+[ 0855 ]
+Haven't coded much this weekend yet. Have been doing quite a bit of reading ( to the point where I have't even watched any movies... ). Still need to work on getting 
+the animation rate stuff implemented.
+[ 1748 ]
+Saw Be Kind Please Rewind , and 10,000 BC ( uhg... ). Worked on the offending code. Made some progress , but still not done yet... Back to reading.
+... 
+Darn it , photoshop lost some of the sprite in the crash casued by the wind outside... Doh!!!
+
+[ March 9 ]
+[ 0722 ]
+Alright got the timing issue resolved. Cool. Now I have to figure out how to get the animation to loop back to it's original frame , and we will be in buisness. 
+[ 0759 ]
+Reworking animation code to use a  hacked together sequencing system... Not alltogether a bad idea... Just getting it working
+[ 0859 ]
+Hmmm.. Crashed being caused by a bug that makes no sense whatsoever... Bad thing , is that it is crashing from within the Allegro dll , and I can dereference the offending code
+that calls the API routine.
+[ 1053 ]
+Everything *seems* to be working now. The one test level was using was causing Allegro to freak out , so I switched to level one ( after figuring out that the main routine
+was refering an out-of-date map ) and everything is working nicely. Time to work on some more sprites.
+
+[ March 10 ]
+[ 1131 ]
+Working on Ent_Animate some more. Trying to get everything working perfect , but it is a pretty tricky bit of code.
+[ 1136 ]
+Alright cool fixed it. The assignment was conditional when it shouldn't have been. At least it's working now.
+[ 1203 ]
+Next , to do the sprites for the powerups.
+[ 1233 ]
+Added all the framework code for the powerup sequences-n-stuff. Now all that remains is the pixeling.
+[ 2109 ]
+Ahhhh... There wasn't a problem with the fullscreen bit-depth , just that the entity renderer was overwriting some pixels... Fixed.
+
+[ March 11 ]
+[ 1054 ]
+Came up with a concept for the powerups. It should be pretty cool looking if I can get it animated correctly... Will start on the frames today.
+[ 1226 ]
+Working on a simpler design for the time being. The other one was hard to get into 64x64... Now I just have to figure out how to do selective saturation in PS ( masked saturation ).
+[ 1306 ]
+Got em exported from PS and into the game. They look ok... Cool to see everything coming to life though , even though the gfx aren't that great.
+[ 1818 ]
+Now that different entities are being rendered within the same frame , an troublesome bug has appeared: If two different ent-types have different animation rates , 
+they animate asycronously ( meaning each entity types hogs the timer and updates it frames seperately , while the others remain on a stagnant frame... ). Not sure
+how to fix this yet... 
+
+[ March 12 ]
+[ 1227 ]
+Not much work done today, cause I was working on getting an "actual" job... Did make a demo for the stage thus far though... 
+[ 1413 ]
+Starting to add the macros for the cocci class. Should be sleeping... 
+
+[ March 13 ]
+[ 1055 ]
+Starting new job on the 1rst. :) . 
+Anyway , got the cocus in the game now. And , I must say , they are the most fluidly animated ones so far. Strange bug has been revealed however. For some 
+completely unknown reason , there is a leak over from loaded frames , such that some of the kamikaze's frames are being displayed when references memory intended
+to hold the cocci frames... Have no idea why that is happening , but is an absolute need-to-fix.
+[ 1336 ]
+Hmmmmm... As it turns out , I had just assigned on off-by-one value to a macro. *BUT* it would make more sense for thr program to crash ,rather than have it 
+reference data loaded elsewhere... Strange.
+
+[ March 14 ]
+[ 1313 ]
+Working  on the bacilli class. Added placeholder code , working on sprite.
+[ 1720 ]
+Finished 10 bitmaps for bacilli. Adding to code... 
+[ 1814 ]
+Bacilli,diplobacilli and streptobacilli all working an animated now. Cool. Everything is looking a bit funky ( as is my style ) , but pretty cool overall. 
+
+[ March 15 ]
+[ 0029 ]
+Could have done either blasto or the first boss next , but I have decided to do the player... This will be the first sprite that has multiple states and thus 
+required sequence switching.. 
+[ 0459 ]
+Did the player sprite by scanning in a quick sketch and then reworking it with vectoring gfx. And I must say , I now want to do all the other sprites over again , 
+because of how much better it looks. Working on getting him incorportated with the code now.. 
+[ 0527 ]
+Got goosebumps watching the new player sprite move around. It actually looks cool. I can see that my vison of having a moving cartoon are well within reach once I 
+rework the exsisting and future sprites using my newfound method.
+[ 1616 ]
+Almost done with vectoring the four player's frames. I have it down pretty good now , to where I can crank them out pretty fast. 
+[ 1706 ]
+Animation preview really looks fluid and cool in GraphicsGale. Now I have to write some new code that will preserve the current animation frame under certain 
+conditions...
+[ 2236 ]
+Thinking about how to fix the resilent animation timing issue... 
+
+[ March 16 ]
+[ 0849 ]
+I didn't really have to adjust the offending animation routine , but it is much better now. It seems that if any of the entites animation rate is drasticly higher
+than the  others  , some of it's cycles are skipped over when the temporary timer is reset... Yeah.... It works for now , so screw it. It may arise again later when I 
+want something to be animated really slow , but I am moving on for now. Right now , I want to see how to accomplish an effect where a sprite can change it's pallete
+( as upon impact ) , so I will have to check out the Allegro chm... 
+[ 1226 ]
+Well thats going to be about that for this weekend. Just got a cool idea for a boss effect from playing Shinobi 3. I can limit bitmap distort-fx to each entities 
+space ( making it faster than fullscreen , per-pixel approaches ). Also , I need to consider having predetermined palettes to switch to... And I will be doing some 
+reaseach on allegro's palette routines , because the ones in the .chm are for indexed modes ( and are terribly slow )... I am sure there is a hack to be found... 
+[ 1336 ]
+Hacked a fix that was causes seams between tiles due to round off errors...
+
+[ March 17 ]
+[ 1122 ]
+Finshed intial sprites for player's droid. Working on getting them into the game ( so sleepy )
+[ 1206 ]
+Lesson learned : ok to do art while sleepy , NOT ok to code... 
+[ 1757 ]
+Droid in the game  now. Next to add some code to get him to boob a bit , and thus , make him look seperate from the player.
+
+[ March 18 ]
+[ 1113 ]
+Finished the frames for the default cannon round. Time to add it to the game now.
+[ 1134 ]
+Strange bug where the bullet is showing up as the droid... Interesting. The player source file is starting to get a bit obfuscated... But I will work on this some more once 
+I get back from getting my car fixed ( alternator-belt ).
+[ 1342 ]
+Oh ok. Fixed it , I have to remember to adjust the active frame macro when adding frames... 
+[ 2043 ]
+Droid beam now inflates the droid , now I have to add to code to make it deflate if now active.
+
+[ March 19 ]
+[ 0848 ]
+Decided to start on the sprites for the first boss.
+[ 1230 ]
+Cranking through code/sprites like a crazed man!!! Need to consider adding a function that initializes an entities animation data... 
+[ 1737 ]
+Added Ent_SetAnimationParams. Added the bosses' mouth and eyebrows as seperate entities.
+
+[ March 20 ]
+[ 1001 ]
+Added paramter to P_CreateEntity which sets the specified entity type; Removed code that it's absence created.
+[ 1523 ]
+Darn it... In update the entity creation stuff , I've somehow managed to make the orbs stop firing...
+[ 1536 ]
+Oh ok. Fixed it. P_CreateEntity auto-activated each entity , so I had to go in and manually deactivated them.
+
+[ March 21 ]
+[ 0906 ]
+Will finish up the first bosses' sprites today. Then go on and tweak the code accordingly.
+[ 2312 ]
+The eyeballs shoot tears now.. Hehhehehhh. Will do the projectiles for the boss next.
+
+[ March 22 ]
+[ 0649 ]
+Working on the boss projectiles.
+[ 0845 ]
+All initial sprites completed and incorporated. I will probably be adding more frames later to get the animation a more fluid, but for now, 
+I will start tweaking the code.
+
+[ March 23 ]
+[ 0704 ]
+Done with the boss ( for now  ). He still needs some more frames , but everything is pretty much in place for now. So , now I am going through 
+all the examples that came with the allegro distribution in search for some new graphical techniques... 
+[ 1317 ]
+The example source is quite horrible... Oh well , I gleaming some things from it. Next week I will be focusing on getting the second boss sprited out... 
+Also , will be doing the blood particulates.
+
+[ March 24 ]
+[ 0851 ]
+New week , new boss. Adding animation placeholder code.
+[ 1253 ]
+I've decided to allow the passing of a fourth parameter to Ent_Draw , that allows the sprite to be rotated. It remains to be seen if the pivot_sprite 
+routine masks properly...
+
+[ March 25 ]
+[ 1313 ]
+Not much code done the past couple of days.. Been busy with far more important things... Never thought I'd say that. Fixed the Ent_Draw to accomadate 
+rotated sprites... Now I need to start on the sprites. I came up with a new idea that incorporates the original sketch into the final sprite. I will try
+that and see if I can get a more stylish look.
+[ 1634 ]
+First time I've ever seen this one : 
+
+Linking...
+LINK : fatal error LNK1212: error opening program database; file is in use
+Error executing link.exe.
+Creating browse info file...
+
+That sucks. Not sure whats causing it either cause I can get the linker to work on other projects... This really. I need to restart and I don't want to... 
+I guess it's time to go back to sleep.
+[ 1924 ]
+Can't get the rotated sprites working correctly... 
+
+[ March 26 ]
+[ 1005 ]
+Can't seem to get any sprites done this week... Car blew out a tire 2day, so that's  going to cause a major inconvience... 
+[ 1409 ]
+Removed the auto-scroll hack for now.
+
+[ March 27 ]
+[ 1150 ]
+Finished the sketches for the bosses 3 sprites. Unfortunately , scanner needs a reset... Got tire fixed today.
+
+[ March 28 ]
+[ 1028 ]
+Solomon's b-day today. And I finally am doing the photoshop work for boss # 2. Looks pretty good so far... 
+[ 1602 ]
+Finshed the first 3 sprites. Trying to get it to show up in the game now.
+[ 2213 ]
+Boss looking pretty cool now. Just need to do some more frames for him... 
+
+[ March 29 ]
+[ 0449 ]
+Reticule now sprite-based ( no animation yet... )
+[ 1410 ]
+Added alternate sequence for reticule. Need to do the projectiles next.
+
+[ March 30 ]
+[ 0716 ]
+Play Nouita Love 2 yesterday... Wow! My game looks crap now , but I am motivated to get at least the same about of movement of screen as Joakim did. 
+Nothing but respect for what he has accomplished. Utterly amazing. Trying to get the rotated sprites working...
+[ 0811 ]
+Added functionally to Ent_Animated , and the SequenceInfo_t struct to allow the triggering of samples based on a predetermined frame.
+[ 1253 ]
+Watched 21. Very good. Going to get back to trying to get the pivot_sprite calls to work b4 I go to sleep.
+[ 1259 ]
+Ohhhhh... So. I attribute the flub with the rotating sprites to an inconsistent api parameter usage... The paramters for the src and dest
+buffers are different for the rotating blitters than for the rest of the routines... Oh well.
+[ 1801 ]
+Almost have the pivot_scaled_sprite call completed intergrated now. Just have to gain a more throrough understanding on the cx/cy
+params...
+[ 1955 ]
+Look to be working wow. Goodie.
+
+[ March 31 ]
+[ 1150 ]
+Sketched a quick two sprites ( to be ). Going to work on them in photoshop before I go to sleep.
+[ 1232 ]
+Sprites in game now... Although they look a little bit like cucumbers... Oh well. Still need to get the scaling projectile working correctly... 
+[ 2123 ]
+Boss 2 pretty much done now ( for now ). Hmmm... What next. I think I will do some explosion sprites next. And the code for them ( which should be some
+new and 'exciting' to code ).
+
+[ April 1 ]
+[ 1051 ]
+Decided to work on the palette routine(s) for damage fxs.
+[ 1118 ]
+Have encountererd a design delima... Is there an eloquent solution?
+
+[ April 2 ]
+[ 1746 ]
+Still haven't been able to get the palette stuff working correctly... Am thinking of starting on the explosions in the mean time.
+
+[ April 4 ]
+[ 1127 ]
+Not to much code done during this week. Will work on some stuff this weekend.
+[ 1530 ]
+Finished a decent looking animation sequence for a generic  explosion.
+[ 1615 ]
+Adding structs to accomadate explosions.
+
+[ April 5 ]
+[ 0835 ]
+Just imported the explosions, and watched them in-game , only to realise that there need to need some adjustments in the sprites to get the 
+sequence to look properly... Reworking.. 
+[ 0925 ]
+Ok, it looks much better now. Now the only problem is getting the code to work with the exsisting entity system... 
+[ 1015 ] 
+That's weird. After building the executable , and running it , nothing happens all-of-a-sudden. No process id shows up in the task manager 
+either... Good times. Probably time for a reset methinks.. Later.
+[ 1640 ]
+Stating to make progress on how the explosions are best structured. Definitely a bit of confusing code... 
+[ 1754 ]
+Ok , explosions partially working now. But now , for some reason the version switches and fullscreen mode switch isn't working ( won't switch 
+to 640x480x26 fullscreen ). Trying to fix that revealed the the damage/palette effects are in fact working , only in 8-bit mode though... So 
+I need to figure out how to get the palette routines working w/true color modes.
+[ 1828 ]
+Cool looking cool. Fullscreen switch still not working... 
+
+[ April 6 ]
+[ 0607 ]
+Tweaked Ent_InitExplosion to coverge a wider area of the target entitiy.
+
+[ April 7 ]
+[ 1611 ]
+Hmmm.., Working on adding the explosions to the second boss ( of which each segment has an array of possible explosions ). But right now , 
+everything crashes ( NULL Pointer ) when the animation sequence is attempted to be referenced... 
+[ 1627 ]
+Heh. I told myself I wouldn't code when sleepy... Friends don't let friends code sleepy... Misplaced variable. And now that its working , it 
+looks really cool!
+[ 1744 ]
+Just got a gift from afar 8) Good times. *Ahem* W/Sample music file loaded , executable is eating up almost 50MB of heapage... Memory leak?
+Content? Sign of progress??? 
+
+Oh yeah , almost forget that today is the 
+
+// [ NINE MONTH MARK ] ===============================================================================================================================================
+
+[ April 8 ]
+[ 1832 ]
+Back on day shift now ( finally ). Had to hectic of a day to even think about code. Although I did take an old 2600 on the subway , and read/anaylized some 
+source that devised a work around for some rudimentary MS script encoding. Interesting. I really do need to subscribe to that... Maybe I will get a chance 
+to figure out something to code before the day is out... 
+
+[ April 10 ]
+[ 1734 ]
+Not much work done on the game past couple of days ( yes , that means I have an actually like again ). Be working with C# and VS2005 at work 
+( soon to be 2008 ), so thats cool. Will be studying .NET stuff this weekend , so I will have to work wisely on this project.
+[ 1737 ]
+I know what I can do , start adding explosion support for all the rest of the game entities... There we go.
+
+[ April 12 ]
+[ 1659 ]
+Adding support for the kamis explosion.
+[ 1852 ]
+On a unrelated note , I am now coding with C# using the Mono IDE ( because I am to poor to afford MSVS2005/2008 , but that will be changing *very* soon... )
+Nothing quite like dev in a console window :(
+
+[ April 13 ]
+[ 0835 ]
+Working on the bacilli's explosions.
+[ 1412 ]
+Working on cocci explosions.
+[ 1431 ]
+After realizing that I was writing the same code over-and-over again. I came up with Ent_AddExplosions. That was easy.
+[ 1855 ]
+Bug with the first bosses explosions. No biggie. To lazy to fix it now. Hmmm... Got a decent amount of work done this weekend. I think the 
+next thing to do is get the remaining weapons and thier graphics working. Unless I can come up with something else I'd rather do... 
+
+[ April 18 ]
+[ 2213 ]
+Wow. No code at all this week. Everything I coded this week was in C# ( which I am starting to get pretty good at btw ). Oh well , lets see 
+what this weekend brings.
+
+[ April 19 ]
+[ 1046 ]
+Cleaned up some code in the player init function ( almost said method there for a second... ). This weekend , I plan on getting the  homing lazer 
+completed ( w/gfx ).
+[ 1820 ]
+Was struggling with a rather simple routine , but it's amazing what a pencil and paper can do for code ( force you to think through a problem ).
+
+[ April 20 ]
+[ 0903 ]
+Added P_ChangeAmmunition. Working on getting it intergrated.
+[ 0924 ]
+Hmmm.. Something wrong with the way the laser bitmaps are  being imported.
+[ 1959 ]
+I know whats wrong now. Just need time to fix it now.
+
+[ April 23 ]
+[ 0349 ]
+Fixed big memory leak caused by P_CreateEntity. 
+
+[ April 26 ]
+[ 2015 ]
+Working on getting that bug fixed.
+[ 2018 ]
+Conditional breakpoints are a great thing.. 
+[ 2030 ]
+What an obscure bug!!! But it was isolated and terminated with realative ease. The Entity Render had a hard-coded frame reference that allowed the bitmap
+blit routine to be passed inconsistent data ( tried to sample a sprite larger than the one to be rendered ). NOTE TO SELF : if the crash shows up as 
+a dll fault , focus debugging on api call parameters. Now to get the homing laser rendered properly.
+[ 2141 ]
+Added 5 prototypes to render each projectile. After these are done , a *very* large chunk of the game will have been completed...  Things are starting to come 
+together.
+[ 2150 ]
+P_Draw now draws bullets based on current weapon type... Goodie. Converted the cannon's renderer , now working on the homing laser.
+
+[ April 27 ]
+Still working on the homing laser. The code is pretty near complete for the renderer , but there a lot of smoothing out that needs to be done 
+to the weapons system in general.. Things to do , things to do... 
+
+[ April 29 ]
+[ 2037 ]
+Tweaking G_RunHomingLaser so it keeps the player updated with the latest target info. Added DotProduct routine.
+
+[ May 1 ]
+Briefly worked on unifying dotprod's output... STill to no avail.
+
+[ May 4 ]
+Wow... No code done this weekend... Guess that means I have a life... Yessir.
+
+[ May 6 ]
+[ 0711 ]
+FIddled around with the normal stuff , tried to do some visual debugging.... It seems that the normals are being calculated incorrectly
+( or perhaps interrpeted incorrectly ). Wow , now that I code all day , I can say its pretty amazing that I still *want* to do so in my 
+space time... .Interesting.. A labor of love , I think so.
+
+
+[ May 8 ]
+// [ TEN MONTH MARK ] ===============================================================================================================================================
+Wow not much code this month , due a new job and a blossoming relationship ( could this be a sign of times to come??? ). But I did add about 4 lines
+of code to a projetile rendering today... 
+
+[ May 10 ]
+[ 1801 ]
+Actually plan on getting some code done this weekend. Going back and trying to get the homing laser problem fixed. Decided that the dot-prod
+routine was being feed ill-concived vectors. Implmenting/debugging the solution I came up with.
+
+
+
+
+
+
+
+

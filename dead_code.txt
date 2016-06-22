@@ -1,0 +1,431 @@
+// the infamous dead code file
+
+Maybe it's a sign of improvement that I've not much to put here... 
+
+[ 8/29 ] Code was ripped from main, and replaced with high level logic routines
+
+	while(!key[ KEY_ESC ] )
+	{
+		P_Move( &player );		
+		Droid_UpdatePosition( &player , &player.droid );
+		r_boolean kamiStat = r_true;//Kamikaze_Run( &kami[0] );
+		r_boolean kami2Stat = r_true;//Kamikaze_Run( &kami[1] );
+
+//		G_ProcessScrolling( &currentGame );
+		
+//		G_RunSpawnedTargets( &currentGame );
+
+		G_RunLogicCycle( &currentGame , &player );
+
+		//Ent_TestForCollision( &player.ent , &kami[0].ent );
+		//Ent_TestForCollision( &player.ent , &kami[1].ent );
+		
+		/*for( int pass=0;pass<50;pass++ )
+		{
+			Ent_TestForCollision( &kami[0].ent , &kami[1].ent );
+			Ent_TestForCollision( &kami[1].ent , &kami[0].ent );
+		}*/
+		
+/*		if( player.currentBullet && player.bulletType == CANNON_ROUND )
+		{	
+			G_ProcessCannon( &currentGame , &player );
+		}
+		else if( player.currentBullet && player.bulletType == HOMING_BEAM )
+		{
+			G_ProcessHomingLaser( &currentGame , &player );
+		}
+		else if( player.bulletType == DROID_AMPLIFIER )
+		{
+			G_ProcessDroidAmplifier( &currentGame , &player );
+		}
+
+		for(int i=0,hits=0;i<player.currentBullet;i++ )
+		{
+			for(int i2=0;i2<currentGame.gameHeap.kamiSpacePointer;i2++ )
+			{
+				if( Ent_TestForCollision( &currentGame.gameHeap.pKamiKazeSpace[ i2 ].ent , &player.projectiles[ i ].ent ) )
+				{
+					P_DestroyBullet( &player , i );
+				}
+
+				Ent_TestForCollision( &player.ent , &currentGame.gameHeap.pKamiKazeSpace[i2].ent );
+			}
+
+			G_WriteToDebugWindow( hits , "Number of hits : %d" , 230 , 410 );
+		}*/
+
+/*		if( !kamiStat )
+		{
+			//G_RemoveEntity( &currentGame , currentGame.entitiesOnscreen );
+			Kamikaze_SpawnRandom( &kami[0] );
+			//G_AddEntity( &currentGame , &kami.ent );
+		}
+
+		if( !kami2Stat )
+		{
+			Kamikaze_SpawnRandom( &kami[1] );
+		}*/
+
+		
+		M_Draw( &currentGame.currentMap );
+		P_Draw( &player ); 
+		Droid_Draw( &player.droid );
+/*		Kamikaze_Draw( &kami[0] );		
+		Kamikaze_Draw( &kami[1] );*/
+
+		for( int kamis=0;kamis<currentGame.gameHeap.kamiSpacePointer;kamis++ )
+		{
+			pKamikaze_t pCurrentKami = &currentGame.gameHeap.pKamiKazeSpace[ kamis ];
+			Kamikaze_Draw( pCurrentKami );
+		}
+		
+		frameCount++;
+
+		G_WriteToDebugWindow( masterScale , "MASTER SCALE = %1.5f" , 250 , 0 );
+		G_WriteToDebugWindow( kamiStat , "Kami_ent status : %i" , 10 , 400 );
+		G_WriteToDebugWindow( kami[0].ent.position.x , "Kami_ent xPos : %d " , 10 , 410 );
+		G_WriteToDebugWindow( kami[0].ent.position.y , "Kami_ent yPos : %d " , 10 , 420 );
+		G_WriteToDebugWindow( kami[0].ent.speed , "Kami_ent speed : %d " , 10 , 430 );
+		G_WriteToDebugWindow( SYS_CalcFPS( frameCount ) , "fps = %d" , 10 , 440 );
+//		G_WriteToDebugWindow( hits , "collision with player : %d" , 10 , 450 );
+		G_WriteToDebugWindow( msecTicker , "msec = %d" , 100 , 10 );
+		G_WriteToDebugWindow(  secTicker , " sec = %d" , 300 , 10 );
+		G_WriteToDebugWindow(  minTicker , " min = %d" , 500 , 10 );		
+		G_WriteToDebugWindow(  currentGame.currentMap.position.x , " map offset = %d " , 220 , 380 );
+		G_WriteToDebugWindow(  currentGame.gameHeap.kamiSpacePointer , "allocated kamis = %d" , 400 , 380 );
+		
+		G_WriteToDebugWindow( currentGame.currentMap.accelerationPointCount , "Acceleration Triggers : %d " , 400 , 420 );
+		G_WriteToDebugWindow( currentGame.nextSpeedTriggerIndex , " (%i)" , 600 , 420 );
+
+		G_WriteToDebugWindow( currentGame.currentMap.scalePointCount , "Scale Triggers : %d " , 400 , 430 );
+		G_WriteToDebugWindow( currentGame.nextScaleTriggerIndex , " (%i)" , 600 , 430 );
+		
+		G_WriteToDebugWindow( currentGame.currentMap.loopPointCount , "Loop Triggers : %d " , 400 , 440 );
+		G_WriteToDebugWindow( currentGame.nextLoopTriggerIndex , " (%i)" , 600 , 440 );
+		
+		G_WriteToDebugWindow( currentGame.currentMap.spawnPointCount , "Spawn : %d " , 400 , 450 );
+		G_WriteToDebugWindow( currentGame.nextSpawnTriggerIndex , " (%i)" , 600 , 450 );
+		
+		vsync();
+		blit( doubleBuffer , screen , 0 , 0 , 0 , 0 , 640 , 480 );
+		
+		clear_bitmap( doubleBuffer );
+	}
+
+[ 9/12 ] Killed today... Damn you ... you... frustrating bit of code ye!!!
+int G_AddEntity( pGame_t pGame , pEntity_t pEnt )
+{
+	int targetEnt = pGame->entitiesOnscreen;
+
+	if( targetEnt >= MAX_ONSCREEN_ENTITIES )
+	{
+		return MAX_ONSCREEN_ENTITIES;
+	}
+
+	pGame->activeEntities[ targetEnt ] = pEnt;
+
+	// When searching though onscreen entities, you  must you  the 'onscreenTargetID' member to reference ( or a alias thereof )
+	pEnt->onscreenTargetID = targetEnt;
+
+	pGame->entitiesOnscreen++;
+
+	return pEnt->onscreenTargetID;
+}
+
+and your little dog too... 
+int G_RemoveEntity( pGame_t pGame , pEntity_t pEnt )
+{
+	pGame->activeEntities[ pEnt->onscreenTargetID ]->active = r_false;
+	pEnt->onscreenTargetID = 0;
+
+	//G_ResortEntities( pGame );
+
+	pGame->entitiesOnscreen--;
+	
+	return pGame->entitiesOnscreen;
+}
+
+and now to rework it... and perhaps other dependant code as well. 
+
+[ 9/16 ] And your bastard brother too!!!!
+void* VH_Malloc( pVirtualHeap_t pHeap , int entityType )
+{
+	void* genericPointer=NULL;
+	
+	switch( entityType )
+	{
+	case ENTITY_TYPE_KAMIKAZE:
+		{
+			if( pHeap->kamiSpacePointer >= TEST_STAGE_GLOBAL_HEAP_SIZE )
+			{
+				// send the last available space
+				genericPointer = (void*)&pHeap->pKamiKazeSpace[ TEST_STAGE_GLOBAL_HEAP_SIZE ];
+				break;
+			}				
+			
+			else
+			{
+				genericPointer = (void*)&pHeap->pKamiKazeSpace[ pHeap->kamiSpacePointer ];
+				pHeap->kamiSpacePointer++;
+				break;
+			}
+		}
+	case ENTITY_TYPE_RED_POWERUP:
+		{
+			if( pHeap->powerUpSpacePointer == TEST_STAGE_GLOBAL_HEAP_SIZE )
+			{
+				genericPointer = (void*)&pHeap->pPowerUpSpace[ pHeap->powerUpSpacePointer ];
+				break;
+			}
+			
+			else
+			{
+				genericPointer = (void*)&pHeap->pPowerUpSpace[ pHeap->powerUpSpacePointer ];
+				pHeap->powerUpSpacePointer++;
+				break;
+			}
+		}
+	}
+
+	return genericPointer;
+}
+
+void VH_Free( pVirtualHeap_t pHeap , int type , int pointer )
+{
+	switch( type )
+	{
+	case ENTITY_TYPE_KAMIKAZE:
+		{
+			VH_Resort( pHeap , VH_ENTITY_KAMIKAZE );			
+			//pHeap->kamiSpacePointer--;
+			break;
+		}
+
+	case ENTITY_TYPE_RED_POWERUP:
+		{
+			VH_Resort( pHeap , VH_ENTITY_POWER_UP );			
+			//pHeap->powerUpSpacePointer--;
+			break;
+		}
+	}
+}
+			
+static void VH_Resort( pVirtualHeap_t pHeap , int type )
+{
+	switch( type )
+	{
+	case ENTITY_TYPE_KAMIKAZE:
+		{
+			//VH_ResortKamikazeSpace( pHeap );
+			break;
+		}
+		
+	case ENTITY_TYPE_RED_POWERUP:
+		{
+			//VH_ResortPowerupSpace( pHeap );
+			break;
+		}
+	}
+}
+
+// To be honest, this one is just being scrapped and rewritten, so it still lives... for now. 
+
+[ 9/19/07 ] Having to kill this one last time:
+void* VH_Malloc( pVirtualHeap_t pHeap , int entityType )
+{
+	void* genericPointer=NULL;
+	int vh_pointer=0;
+	
+	switch( entityType )
+	{
+	default:
+	case VH_ENTITY_KAMIKAZE:
+		{
+			// Bounds testing. if a request is made when max space is allocated, return last index.
+			vh_pointer = (pHeap->kamiSpacePointer >=TEST_STAGE_GLOBAL_HEAP_SIZE) ? 
+					     (TEST_STAGE_GLOBAL_HEAP_SIZE) : 
+						 (pHeap->kamiSpacePointer);
+			
+						 genericPointer = (void*)&pHeap->pKamiKazeSpace[ vh_pointer ];
+			
+			// move to the next index if there is room
+			 if( vh_pointer < TEST_STAGE_GLOBAL_HEAP_SIZE )
+			 {
+				 pHeap->kamiSpacePointer++;
+				 pHeap->pKamiKazeSpace[ vh_pointer ].ent.allocated = r_true;
+			 }
+			 
+			 else
+			 {
+				set_window_title("Virtual heap overflow attempted and prevented.");
+			 }
+
+			break;
+		}
+		
+	case VH_ENTITY_POWER_UP:
+		{
+			vh_pointer = (pHeap->powerUpSpacePointer >= TEST_STAGE_GLOBAL_HEAP_SIZE ) ? 
+					     (TEST_STAGE_GLOBAL_HEAP_SIZE) :
+						 (pHeap->powerUpSpacePointer);
+
+			genericPointer = (void*)&pHeap->pPowerUpSpace[ vh_pointer ];
+			
+			if( vh_pointer < TEST_STAGE_GLOBAL_HEAP_SIZE )
+			{
+				pHeap->powerUpSpacePointer++;
+				pHeap->pPowerUpSpace[ vh_pointer ].ent.allocated = r_true;
+			}
+
+			else
+			{
+				set_window_title("Virtual heap overflow attempted and prevented.");
+			}
+
+			break;
+		}
+	}
+
+	return genericPointer;
+}
+
+// October 30 
+// Killed this in favor of a differnt control-based approach
+
+/*static*/int blastoPatterns[5][PATTERN_STEP_SIZE ] =
+{
+//  [ phase lenghts for : left , right , up , down ]
+	{ APPROX_SECONDS( 10 ) , APPROX_SECONDS( 0 ) , APPROX_SECONDS( 0 ) , APPROX_SECONDS( 0 )  } , 
+	{ APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 )  } , 
+	{ APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 )  } , 
+	{ APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 )  } , 
+	{ APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 ) , APPROX_SECONDS( 5 )  } 
+};
+
+// November 12 [ FROM static r_boolean B2_RunPhaseOne( pBoss_2t pB2 , pPlayer_t pP ) ] 
+// Killed this because the round off errors where distorting the shape of the circle... Used pre-calc'ed values instead.
+
+	//pO->ent.position.x = center.x * cos( pO->rotationAngle * PI / 180 ) - sin( pO->rotationAngle * PI / 180 );  // [ ELIMINATE ROUND OFF ERRORS ]
+	//pO->ent.position.y = center.y * sin( pO->rotationAngle * PI / 180 ) + cos( pO->rotationAngle * PI / 180 );
+
+
+// December 4
+// Decided abandon the 3d to 2d projections , and instead use an easier-to-implement fake... 
+
+		else
+		// update positions
+		{
+			for( int bullet = 0;bullet < BOSS_TWO_PROJECTILES;bullet++ )
+			{
+				
+				if( pB2->projectiles[ bullet ].active )
+				{
+					// project the 3D point to 2D space
+					pB2->projectiles[ bullet ].position = Project3Dto2D( pB2->projectiles[ 0 ].position.x , pB2->projectiles[ 0 ].position.y , pB2->projectiles[ 0 ].target.x , BOSS_TWO_PHASE_ONE_PLANE );
+					
+					// advance the point toward the screen
+					pB2->projectiles[ bullet ].target.x -= pB2->projectiles[ bullet ].speed;
+
+					if( pB2->projectiles[ bullet ].target.x <= 0 )
+					// bullet is finished once it 
+					{
+						pB2->projectiles[ bullet ].active = r_false;
+
+						if( bullet == BOSS_TWO_PROJECTILES - 1 )
+						{
+							pB2->targetLocked = r_false;
+						}
+					}
+				}
+			}
+		}
+
+// also, from elsewhere in the same routine.
+
+// cheap hack that uses an unused field in the entity-struct
+				pB2->projectiles[ bullet ].target.x = BOSS_TWO_PHASE_ONE_PLANE + (bullet<<2); // store z component here
+
+// March 17
+Ripped the old , defunct droid movement code in preperation to redefine his behavior.
+
+	static r_boolean droidPhaseOne = r_true;
+	static r_boolean droidPhaseTwo = r_false;
+	static int index=0;
+
+	int deltaX = abs( pPlayer->ent.position.x - pDroid->position.x ), 
+		deltaY = abs( pPlayer->ent.position.y - pDroid->position.y );
+	
+	if( pDroid->position.x == pPlayer->ent.position.x && pDroid->position.y == pPlayer->ent.position.y )
+	// set a new target.
+	{
+		pDroid->target.x = pPlayer->ent.position.x + DROID_COMFORT_DISTANCE;
+		pDroid->target.y = pPlayer->ent.position.y + DROID_COMFORT_DISTANCE;
+	}
+
+// March 19
+Killing the old poor-man , placeholder rendering code .
+
+/*	rectfill( doubleBuffer , pB1->ent.position.x , pB1->ent.position.y , pB1->ent.position.x + BOSS_ONE_SIZE_X , pB1->ent.position.y + BOSS_ONE_SIZE_Y , color );	
+	rectfill( doubleBuffer ,
+			  pB1->ent.position.x + 25 , 
+			  pB1->ent.position.y + 25 , 
+			  pB1->ent.position.x + ( BOSS_ONE_SIZE_X ) - 25 , 
+			  pB1->ent.position.y + ( BOSS_ONE_SIZE_Y ) - 25 , 
+			  makecol( 128 , 128 , 0 )
+			  );*/
+			circlefill( doubleBuffer , pB1->projectiles[ bullet ].position.x , pB1->projectiles[ bullet ].position.y , 10 , makecol( 255 , 0 , 255 ) );
+/*			line( doubleBuffer , pB1->ent.position.x + ( pB1->ent.w >> 1  ) , 
+								 pB1->ent.position.y + ( pB1->ent.h >> 1 ) , 
+								 pB1->projectiles[ bullet ].position.x , 
+								 pB1->projectiles[ bullet ].position.y , 
+								 makecol( 255 , 255 , 0 ) 
+								 );*/
+
+	//circlefill( doubleBuffer , pO->ent.position.x , pO->ent.position.y , BOSS_ONE_ORB_SIZE_X , orbColor );
+	//circlefill( doubleBuffer , pO->ent.position.x , pO->ent.position.y , BOSS_ONE_ORB_SIZE_X >> 1, makecol( 45 , 45 , 45 ) );
+
+// March 29 
+More poor-man , primative-based rending code for the second bosses targeting reticule : 
+
+/*		// draw aiming reticule
+		int rectColor = ( pB2->targetLocked ) ? makecol( 255 , 0 , 0 ) : makecol( 0 , 255 , 0 );
+
+		rect( doubleBuffer , 
+			  pB2->reticule.position.x , 
+			  pB2->reticule.position.y , 
+			  pB2->reticule.position.x + BOSS_TWO_RETICULE_SIZE_X , 
+			  pB2->reticule.position.y + BOSS_TWO_RETICULE_SIZE_Y , 
+			  rectColor
+			  );
+
+		line(  doubleBuffer , 
+			   pB2->reticule.position.x + (BOSS_TWO_RETICULE_SIZE_X >> 1 ) , 
+			   pB2->reticule.position.y , 
+			   pB2->reticule.position.x + ( BOSS_TWO_RETICULE_SIZE_X >> 1 ) , 
+			   pB2->reticule.position.y + BOSS_TWO_RETICULE_SIZE_Y , 
+			   rectColor
+             );
+
+		line(  doubleBuffer , 
+			   pB2->reticule.position.x , 
+			   pB2->reticule.position.y + ( BOSS_TWO_RETICULE_SIZE_Y >> 1 ) , 
+			   pB2->reticule.position.x + BOSS_TWO_RETICULE_SIZE_X , 
+			   pB2->reticule.position.y + ( BOSS_TWO_RETICULE_SIZE_Y >> 1 ) , 
+			   rectColor
+             );
+*/
+
+// April 26 
+Magic numbers are death anyway... 
+
+		masked_stretch_blit( pE->frames[ pE->animationData.currentFrame ] ,
+						     doubleBuffer ,
+							 0 , 0 ,
+							 pE->frames[0]->w , pE->frames[0]->h ,
+							 pE->position.x , pE->position.y ,
+							 pE->w * masterScale * scale_x,
+							 pE->h * masterScale * scale_y );
+
+
+
+Change '0' to currentFrame; alias to currentFrame member of AnimationData_t struct.

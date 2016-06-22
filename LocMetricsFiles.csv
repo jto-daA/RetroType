@@ -1,0 +1,68 @@
+
+File,LOC,SLOC-P,SLOC-L,MVG,BLOC,C&SLOC,CLOC,CWORD,HCLOC,HCWORD
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\company_intro.cpp,323,216,109,26,50,9,57,184,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\dev_intro.cpp,188,110,70,14,30,1,48,152,12,36
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\font.cpp,92,61,11,5,4,0,27,53,12,30
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\game.cpp,946,622,373,89,108,17,216,759,15,60
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_elements.cpp,331,251,120,30,34,3,46,115,13,48
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_font.cpp,247,211,126,41,9,0,27,69,13,47
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_sprite.cpp,69,25,12,1,8,0,36,93,14,51
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_system.cpp,76,34,19,5,15,1,27,69,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\GUI.CPP,55,19,11,1,10,0,26,56,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\logic.cpp,319,209,129,28,33,3,77,311,12,30
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\main.cpp,92,61,41,2,27,0,4,5,0,0
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\underwater_level.cpp,478,278,164,33,74,0,126,344,12,35
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\common.h,32,12,5,0,8,0,12,34,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\company_intro.h,109,74,11,0,19,1,16,47,12,38
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\cube.h,65,39,14,0,13,0,13,32,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\dev_intro.h,49,27,4,0,7,0,15,41,12,36
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\font.h,69,46,2,0,7,0,16,45,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\game.h,105,71,40,0,19,2,15,43,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_elements.h,31,12,5,0,7,0,12,33,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_font.h,25,8,2,0,5,0,12,34,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_sprite.h,35,16,10,0,7,1,12,34,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\gfx_system.h,24,7,2,0,5,0,12,39,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\GUI.H,29,9,2,0,7,0,13,41,13,41
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\logic.h,43,23,6,0,7,0,13,37,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\session.h,47,22,12,0,9,0,16,43,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\underwater_level.h,63,33,19,0,15,1,15,41,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\company_intro.cpp,323,216,109,26,50,9,57,184,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\dev_intro.cpp,188,110,70,14,30,1,48,152,12,36
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\font.cpp,92,61,11,5,4,0,27,53,12,30
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\game.cpp,946,622,373,89,108,17,216,759,15,60
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_elements.cpp,331,251,120,30,34,3,46,115,13,48
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_font.cpp,247,211,126,41,9,0,27,69,13,47
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_sprite.cpp,69,25,12,1,8,0,36,93,14,51
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_system.cpp,76,34,19,5,15,1,27,69,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\GUI.CPP,55,19,11,1,10,0,26,56,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\logic.cpp,319,209,129,28,33,3,77,311,12,30
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\main.cpp,92,61,41,2,27,0,4,5,0,0
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\underwater_level.cpp,478,278,164,33,74,0,126,344,12,35
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\common.h,32,12,5,0,8,0,12,34,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\company_intro.h,109,74,11,0,19,1,16,47,12,38
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\cube.h,65,39,14,0,13,0,13,32,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\dev_intro.h,49,27,4,0,7,0,15,41,12,36
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\font.h,69,46,2,0,7,0,16,45,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\game.h,105,71,40,0,19,2,15,43,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_elements.h,31,12,5,0,7,0,12,33,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_font.h,25,8,2,0,5,0,12,34,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_sprite.h,35,16,10,0,7,1,12,34,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\gfx_system.h,24,7,2,0,5,0,12,39,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\GUI.H,29,9,2,0,7,0,13,41,13,41
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\logic.h,43,23,6,0,7,0,13,37,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\session.h,47,22,12,0,9,0,16,43,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\BACKUP\underwater_level.h,63,33,19,0,15,1,15,41,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\game.cpp,740,483,289,72,85,13,172,602,14,48
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_elements.cpp,277,214,104,27,28,3,35,78,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_sprite.cpp,69,25,12,1,8,0,36,93,14,51
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_system.cpp,76,34,19,5,15,1,27,69,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\logic.cpp,270,154,90,21,35,3,81,325,12,30
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\main.cpp,73,51,37,1,20,0,2,20,0,0
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\common.h,32,12,5,0,8,0,12,34,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\cube.h,54,31,14,0,11,0,12,31,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\game.h,101,68,37,0,19,2,14,42,12,34
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_elements.h,30,11,4,0,7,0,12,33,12,33
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_sprite.h,35,16,10,0,7,1,12,34,12,32
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\gfx_system.h,24,7,2,0,5,0,12,39,12,39
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\logic.h,43,23,6,0,7,0,13,37,12,31
+C:\Program Files\Microsoft Visual Studio\MyProjects\PrimaryCubes3D\simple BACKUP\session.h,47,22,12,0,9,0,16,43,12,32

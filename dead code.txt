@@ -1,0 +1,362 @@
+// For some reason, I figured I'd keep a collection of all the code that I killed during this project... 
+
+[ 9/25/06 ] Scrapped code for cleaner, more efficent approach.
+
+/*
+c_boolean GL_CheckDirections( pCube_t pCube , Cube_t pGameGrid[ GL_EASY_GAME_SIZE_X ][ GL_EASY_GAME_SIZE_Y ] )  //<-- WRONG!!! 
+//c_boolean GL_CheckDirections( pCube_t pCube , Cube_t** pGameGrid )                                              <-- RIGHT!!!
+{
+	// set references, clamping test values within game boundaries.
+	int left = ( !(pCube->gridPosition.xCol - 1) ) ? 
+		( pCube->gridPosition.xCol ) : 
+	    ( pCube->gridPosition.xCol - 1 , pCube->directions[ GL_DIRECTION_LEFT ] = c_true ),
+
+		right = ( pCube->gridPosition.xCol + 1 == pCube->gridPosition.xMax ) ? 
+		( pCube->gridPosition.xCol ) : 
+		( pCube->gridPosition.xCol + 1 , pCube->directions[ GL_DIRECTION_RIGHT ] = c_true ) ,
+	   	
+		down = ( pCube->gridPosition.yRow + 1 == pCube->gridPosition.yMax ) ? 
+		( pCube->gridPosition.yRow ) : 
+		( pCube->gridPosition.yRow + 1 , pCube->directions[ GL_DIRECTION_DOWN ] = c_true ),
+		 
+		row = pCube->gridPosition.xCol,
+		 col = pCube->gridPosition.yRow; 
+	int left=0,right=0,down=0,row=pCube->gridPosition.xCol,col=pCube->gridPosition.yMax;
+
+	if( !pCube->gridPosition.xCol )
+	{
+		pCube->directions[ GL_DIRECTION_LEFT ] = c_false;
+	}
+
+	else
+	{
+		left = pCube->gridPosition.xCol - 1;
+		pCube->directions[ GL_DIRECTION_LEFT ] = c_true;
+	}
+	  
+	// case 1 : all surrounding cells free
+	if( !pGameGrid[ left ][ col ].alive && !pGameGrid[ right ][ col ].alive && !pGameGrid[ row ][ down ].alive )
+	{
+		pCube->directions[ GL_DIRECTION_LEFT ]  =  pCube->directions[ GL_DIRECTION_RIGHT ] = pCube->directions[ GL_DIRECTION_DOWN ]  = c_true;
+		
+		return c_true;
+	}
+
+	// case 2 : all surrounding cells occupied
+	else if( pGameGrid[ left ][ col ].alive && pGameGrid[ right ][ col ].alive && pGameGrid[ row ][ down ].alive )
+	{
+		pCube->directions[ GL_DIRECTION_LEFT ] = pCube->directions[ GL_DIRECTION_RIGHT ] = pCube->directions[ GL_DIRECTION_DOWN ] = c_false;
+		pCube->active = c_true;
+
+		return c_false;
+	}
+
+	// case 3 : cube on left-most wall
+	else if( !pCube->directions[ GL_DIRECTION_LEFT ] )
+	{
+		pCube->directions[ GL_DIRECTION_RIGHT ] = ( pGameGrid[ right ][ col ].alive ) ? ( c_false ) : ( c_true );
+		pCube->directions[ GL_DIRECTION_DOWN ]  = ( pGameGrid[ row ][ down ].alive ) ? ( c_false ) : ( c_false );
+
+		if( !pCube->directions[ GL_DIRECTION_RIGHT ] && !pCube->directions[ GL_DIRECTION_DOWN ] )
+		{
+			return c_false;
+		}
+
+		else
+		{
+			return c_true;
+		}
+	}
+
+	// case 4 : cube on right-most wall
+	else if( !pCube->directions[ GL_DIRECTION_RIGHT ] )
+	{
+		pCube->directions[ GL_DIRECTION_LEFT ] = ( pGameGrid[ left ][ col ].alive ) ? ( c_false ) : ( c_true );
+		pCube->directions[ GL_DIRECTION_DOWN ] = ( pGameGrid[ row ][ down ].alive ) ? ( c_false ) : ( c_true );
+
+		if( !pCube->directions[ GL_DIRECTION_LEFT ] && !pCube->directions[ GL_DIRECTION_DOWN ] )
+		{
+			return c_false;
+		}
+
+		else
+		{
+			return c_true;
+		}
+	}
+
+	// case 5 : cell to the right occupied. movement limited to left or down
+	else if( pGameGrid[ right ][ col ].alive )
+	{
+		if( pCube->directions[ GL_DIRECTION_LEFT ] )
+		{
+			if( pGameGrid[ left ][ col ].alive )
+			{
+				pCube->directions[ GL_DIRECTION_LEFT ] = c_false;
+			}
+
+			if( pGameGrid[ row ][ down ].alive )
+			{
+				pCube->directions[ GL_DIRECTION_DOWN ] = c_false;
+			}
+		}
+	}
+
+	 // case 6 : "" left "" right or down
+	else if( pGameGrid[ left ][ col ].alive )
+	{
+		if( pGameGrid[ right ][ col ].alive )
+		{
+			pCube->directions[ GL_DIRECTION_RIGHT ] = c_false;
+		}
+
+		if( pGameGrid[ row ][ down ].alive )
+		{
+			pCube->directions[ GL_DIRECTION_DOWN ] = c_false;
+		}
+	}
+
+	// case 7 : "" down "" left or right
+	else if( pGameGrid[ row ][ down ].alive )
+	{
+		if( pGameGrid[ left ][ col ].alive )
+		{
+			pCube->directions[ GL_DIRECTION_LEFT ] = c_false;
+		}
+
+		if( pGameGrid[ right ][ col ].alive )
+		{
+			pCube->directions[ GL_DIRECTION_RIGHT ] = c_false;
+		}
+	}
+
+	else
+	{
+		// catch all...
+		pCube->directions[ GL_DIRECTION_LEFT ]  = 
+		pCube->directions[ GL_DIRECTION_RIGHT ] =
+		pCube->directions[ GL_DIRECTION_DOWN ]  = c_true;
+	}
+
+	return c_false;	
+}*/
+
+
+[ 9/27/06 ] taken from G_FindLinks. Scrapped due to poor design and ugly recursion crashes.
+
+	// search to the left
+	if( left )
+	{
+		if( (pCube->frontFace == pGame->pGameCubes[ left ][ row ].frontFace) && pGame->pGameCubes[ left ][ row ].alive )  // current cube, and cube to the left are linked... 
+		{
+			//pCube->flagged = c_true;
+			pGame->pGameCubes[  col ][ row ].flagged = c_true;
+			pGame->pGameCubes[ left ][ row ].flagged = c_true;
+			multiplier++;
+
+			if( !(left - 1) )
+			{ 
+				return c_false;
+			}
+
+			else
+			{
+				if( pGame->pGameCubes[ left ][ row ].frontFace == pGame->pGameCubes[ left - 1 ][ row ].frontFace )
+				{
+					G_FindLinks( &pGame->pGameCubes[ left ][ row ] , pGame );
+				}
+			}
+		}
+	}
+
+	// search to the right 
+	if( right != pCube->gridPosition.xCol - 1 )
+	{
+		if( (pCube->frontFace == pGame->pGameCubes[ right ][ row ].frontFace) && pGame->pGameCubes[ right ][ row ].alive ) // current cube, and cube to the right are linked... 
+		{
+			//pCube->flagged = c_true;
+			pGame->pGameCubes[  col  ][ row ].flagged = c_true;
+			pGame->pGameCubes[ right ][ row ].flagged = c_true;
+			multiplier++;
+
+			if( (right + 1 ) == pCube->gridPosition.xMax - 1 )
+			{
+				return c_false;
+			}
+
+			else
+			{
+				if( pGame->pGameCubes[ right ][ row ].frontFace == pGame->pGameCubes[ right + 1 ][ row ].frontFace ) 
+				{
+					G_FindLinks( &pGame->pGameCubes[ right ][ row ] , pGame );
+				}
+			}
+		}
+	}
+
+	// search up
+	if( up )
+	{
+		if( (pCube->frontFace == pGame->pGameCubes[ col ][ up ].frontFace)  && pGame->pGameCubes[ col ][ up ].alive ) // current cube, and cube above are linked...
+		{
+			//pCube->flagged = c_true;
+			pGame->pGameCubes[ col ][ row ].flagged = c_true;
+			pGame->pGameCubes[ col ][ up  ].flagged = c_true;
+
+			multiplier++;
+		}
+	}
+
+	// search down 
+	if( down != pCube->gridPosition.yMax - 1 )                            // current cube, and cube below are linked... 
+	{
+		if( (pCube->frontFace == pGame->pGameCubes[ col ][ down ].frontFace) && pGame->pGameCubes[ col ][ down ].alive )
+		{
+			//pCube->flagged = c_true;
+			pGame->pGameCubes[ col ][ row  ].flagged = c_true;
+			pGame->pGameCubes[ col ][ down ].flagged = c_true;
+
+			multiplier++;
+		}
+	}
+
+[ 9/29/06 ] Ripped out from G_FindLinks, modified,  and turned into a seperate function ( G_LinearSearch ).
+
+	if( rightValid ) // a like cubes on in the cell to the right, so seach for more links.
+	{
+		multiplier += G_LinearSearch( pCube , pGame , GL_DIRECTION_RIGHT );
+/*		for( i=1;!linkDone;i++ )
+		{
+			if( (pCube->frontFace == pGame->pGameCubes[ col + i ][ row ].frontFace) && pGame->pGameCubes[ col + i ][ row ].alive )
+			{
+				pGame->pGameCubes[ col + i ][ row ].flagged = c_true;
+				multiplier++;
+			}
+			else
+			{
+				linkDone = c_true;
+			}
+		}*/
+	}
+
+[ 9/30/06 ] Re-thought apporach... 
+static void G_ResetCubes( pGame_t pGame )
+{
+	c_boolean gapPresent = c_false;
+
+	for( int yRow = 0;yRow < pGame->currentSession.yDimen; yRow++ )
+	{
+		for( int xCol = 0;xCol < pGame->currentSession.xDimen;xCol++ )
+		{
+			if( yRow == pGame->currentSession.yDimen - 1 )
+			{
+				// do nothing
+			}
+
+			else
+			{
+				if( pGame->pGameCubes[ xCol ][ yRow ].alive )
+				{
+					for( int i = 0;i <= ( pGame->currentSession.yDimen - 1 ) - yRow; i++ )
+					{
+						if(!pGame->pGameCubes[ xCol ][ yRow + i ].alive )
+						{
+							gapPresent = c_true;
+						}
+					}
+
+					// search down each column, and push down all cubes where a gap exsists.
+					for( int xCol=0;xCol<pGame->currentSession.xDimen;xCol++ )
+					{
+						for( int yRow=0;yRow<pGame->currentSession.yDimen;yRow++ )
+						{
+
+						}
+					}				
+				}
+			}
+		}		
+	}
+}
+
+[ 10/06/06 ] replaced a block of buggy, and ill-concieved code from G_LinearSearch
+
+
+	/*while(!linkDone)
+	{
+		switch( side )
+		{
+		case CUBE_FRONT:
+			{
+				if( (pCube->frontFace == pGame->pGameCubes[ col + x][ row + y ].frontFace) && pGame->pGameCubes[ col + x ][ row + y ].alive )
+				{
+					pGame->pGameCubes[ col + x ][ row + y ].frontFlagged = c_true;
+					multiplier++;
+					break;
+				}
+				else
+				{
+					linkDone = c_true;
+				}
+			}
+		case CUBE_BACK:
+			{
+				if( (pCube->rearFace == pGame->pGameCubes[ col + x][ row + y ].rearFace) && pGame->pGameCubes[ col + x ][ row + y ].alive )
+				{
+					pGame->pGameCubes[ col + x ][ row + y ].rearFlagged = c_true;
+					multiplier++;
+					break;
+				}
+				else
+				{
+					linkDone = c_true;
+				}
+			}
+		}
+
+		switch( direction )
+		{
+		case GL_DIRECTION_LEFT:
+			{
+				x--;
+				break;
+			}
+		case GL_DIRECTION_RIGHT:
+			{
+				x++;
+				break;
+			}
+		case GL_DIRECTION_UP:
+			{
+				y--;
+				break;
+			}
+		case GL_DIRECTION_DOWN:
+			{
+				y++;
+				break;
+			}
+		}
+	}*/
+
+
+
+[ 10/21/06 ] Much code has been killed prior to this, but here is a little bit: 
+/*
+==========================================================================
+AI_FishThink_Idle
+
+If nothing special is going on, just swim in a simple pattern.
+==========================================================================
+*/
+void AI_FishThink_Idle( void )
+{
+	static int i=0;
+
+	fishSchool[ FISH_LEADER_01 ].position.xPosition = 180 +  10 * sin( i * 3.14159/180/4 );
+	fishSchool[ FISH_LEADER_01 ].position.yPosition = 150 +  20 * cos( i * 3.14159/180/6 );
+
+	i++;
+
+}
+

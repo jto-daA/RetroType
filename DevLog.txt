@@ -1,0 +1,56 @@
+/=======================================================================================================\
+ *                                      Primary Cubes ( 3D )                                           *
+\=======================================================================================================/
+
+[ 9/16/06 ]  
+Starting project over from scratch... After a CPU melt ( which can't presently be replaced ), 
+a move halfway across the country, and a completely different dev box ( albeit temporarily ),
+it's time to start this over from ground-zero. Also, I have scratched writing all the engine 
+code over again, and instead, opted to use a Win32 implementation of Allegro. I am looking forward
+to coding outside of the ungainly restrictions of message handling an all that other Win32 API bollocks.
+On with the coding.
+
+[ 9/18/06 ]
+Working on logic. Hoping to have a working version up by the end of the week ( at the very latest ). 
+
+[ 9/20/06 ]
+Researching/writing timing routines.
+
+[ 9/24/06 ]
+After just one week, I am already farther along, that with the previous iteration. Graphics ( placeholder )
+are up and running. 95% of hard-coded stuff has been revised. Now, on with the logic coding. 
+
+[ 9/26/06 ]
+Coding is coming along very nicely. Today, will start determing how and what 'links' to incorporate. 
+
+[ 10/01/06 ]
+Working version with scoring up and running. System for dual view operational, but not the focus of 
+development at this point. Next week ( if possible ) aim will be on finalizing the easy mode logic, and 
+spending the rest of the week on everything *but* content. 
+
+[ 10/02/06 ] 
+Researching pixel art resources. Unfortunately, game dev will very likely come to a halt this week... Relocating 
+*again* to DC...
+
+[ 10/06/06 ] 
+Made an animation for the intro screen. Logic is nearing completion. Need to work out some final bugs, but will 
+start focusing on front-end code/resources.
+
+[ 10/12/06 ]
+Working on game content. So far, have made alpha-version : intro_screens (2) , cube sprites, and am now working on
+font set. Will work more on coding this weekend.
+
+[ 10/14/06 ]
+Game running with sprites. Next phase of development is developing the code and content for the game stages. At this point, 2
+stages are planned. This is the last major phase, after which comes menus, file specs, tweaking/debugging and whatever else.
+
+[ 10/19/06 ]
+Coding some cool boids/water routines. 
+
+[ 10/22/06 ]
+Starting writing GUI routines. Code has reached approx 4,100 LOC.
+
+[ 10/27/06 ] Time to start another weekend of coding :) It is very possible, that at the end of these next 2 days, I will have a very
+functional beta running ( barring unforseen bugs to resolve ). At this point, there are several things that,while working, need 
+much fine tuning. My misison for this break, is to implement the level progression,and fine tune/fix logic so that the game may be played
+in a natural manner...
